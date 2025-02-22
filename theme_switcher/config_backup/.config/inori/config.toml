@@ -1,0 +1,46 @@
+[theme.item_highlight_active]
+fg = "#6E93CB"
+bg = "#11101A"
+
+[theme.item_highlight_inactive]
+fg = "#6E93CB"
+bg = "#11101A"
+
+
+[theme.status_artist]
+fg = "#ffffff"
+bg = "#11101A"
+
+[theme.status_album]
+fg = "#ffffff"
+bg = "#11101A"
+
+[theme.album]
+fg = "#ffffff"
+bg = "#11101A"
+
+[theme.playing]
+fg = "#6E93CB"
+
+[theme.paused]
+fg = "#6E93CB"
+bg = "#11101A"
+
+[theme.stopped]
+fg = "#6E93CB"
+bg = "#11101A"
+
+[theme.slash_span]
+fg = "#6E93CB"
+bg = "#11101A"
+
+[theme.search_query_active]
+fg = "#6E93CB"
+bg = "#11101A"
+
+[theme.search_query_inactive]
+fg = "#6E93CB"
+bg = "#11101A"
+[theme.block_active]
+fg = "#6E93CB"
+

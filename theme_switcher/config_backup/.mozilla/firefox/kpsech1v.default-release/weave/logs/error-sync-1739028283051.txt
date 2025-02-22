@@ -1,0 +1,486 @@
+1739027679195	Sync.SyncScheduler	DEBUG	Next sync in 600000 ms. (why=schedule)
+1739027679208	Sync.RemoteTabs	DEBUG	Processing client: {"id":"9WiDvklBK3xb","type":"client","name":"Firefox de denis sur MacBook-Pro-de-denis","clientType":"desktop","lastModified":1738863120150,"tabs":[]}
+1739027679209	Sync.RemoteTabs	INFO	Final tab list has 1 clients with 0 tabs.
+1739027679774	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027679774	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027679774	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027680772	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027680772	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027680772	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027681184	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1739027681185	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1739027681187	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1739027681189	Sync.Engine.Tabs	INFO	Posting 1 records of 1899 bytes with batch=true
+1739027681190	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1739027681190	Sync.Collection	DEBUG	POST Length: 1899
+1739027681372	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/storage/tabs?batch=true&commit=true
+1739027681374	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1739027681773	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027681774	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027681774	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027682776	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027682776	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027682776	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027683777	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027683778	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027683778	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027684841	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027684842	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027684842	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027685843	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027685844	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027685845	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027686850	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027686850	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027686851	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027687852	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027687852	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027687853	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027688853	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027688853	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027688853	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027689855	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027689855	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027689855	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027690856	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027690856	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027690856	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027691857	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027691857	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027691857	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027692858	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027692859	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027692859	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027693860	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027693860	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027693861	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027694861	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027694861	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027694862	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027695863	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027695863	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027695863	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027696864	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027696864	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027696864	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027697868	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027697868	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027697869	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027698870	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027698870	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027698870	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027699992	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027699992	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027699992	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027700994	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027700995	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027700995	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027701995	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027701996	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027701996	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027702997	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027702998	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027702998	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027703998	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027703999	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027703999	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027705000	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027705000	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027705000	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027706001	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027706001	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027706001	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027707004	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027707004	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027707004	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027708018	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027708019	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027708019	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027709019	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027709019	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027709019	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027710021	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027710021	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027710021	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027711023	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027711023	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027711023	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027712024	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027712024	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027712024	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027713025	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027713025	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027713025	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027714027	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027714027	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027714027	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027715041	FirefoxAccounts	TRACE	observed topic=push-message, data=chrome://fxa-device-update, subject=[xpconnect wrapped nsISupports]
+1739027715042	FirefoxAccounts	TRACE	FxAccountsPushService _onPushMessage
+1739027715042	FirefoxAccounts	DEBUG	push command: fxaccounts:command_received
+1739027715042	FirefoxAccounts	INFO	Polling device commands.
+1739027715047	Services.Common.RESTRequest	DEBUG	GET request to https://api.accounts.firefox.com/v1/account/device/commands?index=149318285
+1739027715097	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027715097	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027715097	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027715287	Services.Common.RESTRequest	DEBUG	GET https://api.accounts.firefox.com/v1/account/device/commands?index=149318285 200
+1739027715288	Hawk	DEBUG	(Response) /account/device/commands?index=149318285: code: 200 - Status text: 
+1739027715288	Hawk	DEBUG	Clock offset vs https://api.accounts.firefox.com/v1: -288
+1739027715289	FirefoxAccounts	DEBUG	_updateAccountData with items: ["device"]
+1739027715289	FirefoxAccounts	DEBUG	writing plain storage: ["email","sessionToken","uid","verified","device","oauthTokens","encryptedSendTabKeys","encryptedCloseTabKeys","profileCache"]
+1739027715289	FirefoxAccounts	TRACE	starting write of json user data: ["email","sessionToken","uid","verified","device","oauthTokens","encryptedSendTabKeys","encryptedCloseTabKeys","profileCache"]
+1739027715289	FirefoxAccounts	INFO	Handling 1 messages
+1739027715289	FirefoxAccounts	INFO	Device list cache is fresh, re-using it
+1739027715292	FirefoxAccounts	TRACE	finished write of json user data - took: 3
+1739027715293	FirefoxAccounts	DEBUG	writing secure storage: ["scopedKeys"]
+1739027715293	FirefoxAccounts	TRACE	starting write of user data to the login manager
+1739027715303	FirefoxAccounts	TRACE	finished write of user data to the login manager
+1739027715306	Sync.Telemetry	DEBUG	recording event: {"object":"command-received","method":"open-uri","value":"442880978e3d6247b4df981804e22dc552e207d7067d79e7ab428b033a29c82e","extra":{"flowID":"LGuTsOtA5Xz9","streamID":"RyI3TUJhXAQi","reason":"push"}}
+1739027715306	FirefoxAccounts	INFO	Tab received with FxA commands: "<no title>" from Firefox iOS.
+1739027715307	FirefoxAccounts	TRACE	Tab received URL: https://dn720304.ca.archive.org/0/items/to-love-ru-darkness-2nd-12/to_love-ru_darkness_2nd%2007.mp4
+1739027715323	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1739027716138	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027716138	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027716138	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027717145	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027717145	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027717145	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027718141	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027718142	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027718142	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027719228	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027719228	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027719228	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027719976	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1739027720286	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027720286	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027720286	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027720327	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1739027720327	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1739027720329	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1739027720330	Sync.Engine.Tabs	INFO	Posting 1 records of 1899 bytes with batch=true
+1739027720331	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1739027720331	Sync.Collection	DEBUG	POST Length: 1899
+1739027720510	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/storage/tabs?batch=true&commit=true
+1739027720513	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1739027721289	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027721289	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027721289	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027722293	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027722293	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027722293	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027723296	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027723296	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027723296	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027724293	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027724294	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027724294	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027725295	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027725295	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027725295	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027726299	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027726299	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027726299	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027726743	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1739027727300	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027727301	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027727301	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027728302	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027728302	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027728302	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027729304	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027729304	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027729304	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027730304	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027730305	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027730305	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027731307	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027731307	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027731307	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027731980	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1739027731981	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1739027731983	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1739027731985	Sync.Engine.Tabs	INFO	Posting 1 records of 2219 bytes with batch=true
+1739027731985	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1739027731985	FirefoxAccounts	DEBUG	getOAuthToken enter
+1739027731986	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1739027731986	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token
+1739027731987	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1739027731989	Sync.Collection	DEBUG	POST Length: 2219
+1739027732174	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/storage/tabs?batch=true&commit=true
+1739027732176	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1739027732211	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile 304
+1739027732307	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027732308	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027732308	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027733309	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027733309	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027733309	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027734310	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027734310	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027734310	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027735311	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027735312	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027735312	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027736312	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027736312	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027736312	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027737329	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027737329	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027737329	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027738331	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027738331	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027738331	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027739332	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027739332	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027739332	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027740333	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027740333	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027740333	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027741335	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027741335	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027741335	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027742337	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027742337	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027742337	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027743339	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027743340	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027743340	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027744339	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027744340	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027744340	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027745343	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027745343	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027745343	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027746345	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027746345	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027746346	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027746786	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1739027746798	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1739027747346	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027747347	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027747347	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027748345	FirefoxAccounts	DEBUG	FxAccountsWebChannel message received: fxaccounts:pair_heartbeat
+1739027748346	FirefoxAccounts	DEBUG	Pairing command fxaccounts:pair_heartbeat received
+1739027748346	FirefoxAccounts	WARN	Could not find a pairing flow for FSkBmnu1_Ua9kZfrSySXRA
+1739027748405	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1739027748424	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1739027751791	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1739027751792	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1739027751795	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1739027751798	Sync.Engine.Tabs	INFO	Posting 1 records of 1259 bytes with batch=true
+1739027751799	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1739027751800	Sync.Collection	DEBUG	POST Length: 1259
+1739027751979	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/storage/tabs?batch=true&commit=true
+1739027751982	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1739027774182	FirefoxAccounts	TRACE	observed topic=push-message, data=chrome://fxa-device-update, subject=[xpconnect wrapped nsISupports]
+1739027774182	FirefoxAccounts	TRACE	FxAccountsPushService _onPushMessage
+1739027774182	FirefoxAccounts	DEBUG	push command: fxaccounts:command_received
+1739027774182	FirefoxAccounts	INFO	Polling device commands.
+1739027774186	Services.Common.RESTRequest	DEBUG	GET request to https://api.accounts.firefox.com/v1/account/device/commands?index=149318286
+1739027774381	Services.Common.RESTRequest	DEBUG	GET https://api.accounts.firefox.com/v1/account/device/commands?index=149318286 200
+1739027774381	Hawk	DEBUG	(Response) /account/device/commands?index=149318286: code: 200 - Status text: 
+1739027774381	Hawk	DEBUG	Clock offset vs https://api.accounts.firefox.com/v1: -381
+1739027774382	FirefoxAccounts	DEBUG	_updateAccountData with items: ["device"]
+1739027774382	FirefoxAccounts	DEBUG	writing plain storage: ["email","sessionToken","uid","verified","device","oauthTokens","encryptedSendTabKeys","encryptedCloseTabKeys","profileCache"]
+1739027774383	FirefoxAccounts	TRACE	starting write of json user data: ["email","sessionToken","uid","verified","device","oauthTokens","encryptedSendTabKeys","encryptedCloseTabKeys","profileCache"]
+1739027774383	FirefoxAccounts	INFO	Handling 1 messages
+1739027774383	FirefoxAccounts	INFO	fetching updated device list
+1739027774386	FirefoxAccounts	TRACE	finished write of json user data - took: 3
+1739027774386	FirefoxAccounts	DEBUG	writing secure storage: ["scopedKeys"]
+1739027774386	FirefoxAccounts	TRACE	starting write of user data to the login manager
+1739027774399	FirefoxAccounts	TRACE	finished write of user data to the login manager
+1739027774400	Services.Common.RESTRequest	DEBUG	GET request to https://api.accounts.firefox.com/v1/account/devices?filterIdleDevicesTimestamp=1737213374383
+1739027774577	Services.Common.RESTRequest	DEBUG	GET https://api.accounts.firefox.com/v1/account/devices?filterIdleDevicesTimestamp=1737213374383 200
+1739027774577	Hawk	DEBUG	(Response) /account/devices?filterIdleDevicesTimestamp=1737213374383: code: 200 - Status text: 
+1739027774577	Hawk	DEBUG	Clock offset vs https://api.accounts.firefox.com/v1: -577
+1739027774578	FirefoxAccounts	INFO	Got new device list: 1ddcdd77f0ef718c6321f05ca1eac6aa, 1f8440db2e804ba0bf0d1a3c372688bc, 22e8941e79bd921f4ae9596541887307
+1739027774580	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1739027774580	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1739027774581	FirefoxAccounts	TRACE	Our push subscription looks OK
+1739027774581	FirefoxAccounts	INFO	updating the cache
+1739027774588	Sync.Telemetry	DEBUG	recording event: {"object":"command-received","method":"open-uri","value":"442880978e3d6247b4df981804e22dc552e207d7067d79e7ab428b033a29c82e","extra":{"flowID":"dAYhH1uzPko3","streamID":"TQDipZC51rq8","reason":"push"}}
+1739027774588	FirefoxAccounts	INFO	Tab received with FxA commands: "Watch To LOVE Ru Darkness English Sub/Dub online Free on Aniwatch.to" from Firefox on thomas’s iPhone.
+1739027774588	FirefoxAccounts	TRACE	Tab received URL: https://aniwatchtv.to/watch/to-love-ru-darkness-1477?ep=20663
+1739027774602	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1739027776279	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1739027776486	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1739027779606	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1739027779606	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1739027779608	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1739027779609	Sync.Engine.Tabs	INFO	Posting 1 records of 1559 bytes with batch=true
+1739027779609	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1739027779610	Sync.Collection	DEBUG	POST Length: 1559
+1739027779800	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/storage/tabs?batch=true&commit=true
+1739027779802	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1739027808856	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1739027811446	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1739027812156	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1739027813881	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1739027813881	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1739027813884	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1739027813886	Sync.Engine.Tabs	INFO	Posting 1 records of 1559 bytes with batch=true
+1739027813886	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1739027813888	Sync.Collection	DEBUG	POST Length: 1559
+1739027814075	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/storage/tabs?batch=true&commit=true
+1739027814077	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1739027945032	FirefoxAccounts	ERROR	Pairing channel error: Error: WebSocket unexpectedly closed(resource://gre/modules/FxAccountsPairingChannel.sys.mjs:3599:20) JS Stack trace: FxAccountsPairingChannel</_setupListeners/<@FxAccountsPairingChannel.sys.mjs:3599:20
+1739028280316	Sync.Service	DEBUG	User-Agent: Firefox/131.0.2 (Linux x86_64) FxSync/1.133.0.20241009073503.desktop
+1739028280316	FirefoxAccounts	INFO	Polling device commands.
+1739028280316	Sync.Service	INFO	Starting sync at 2025-02-08 16:24:40 in browser session 5JlDS7jJ0sR1
+1739028280317	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1739028280323	Sync.Status	INFO	Resetting Status.
+1739028280323	Sync.Status	DEBUG	Status.service: success.status_ok => success.status_ok
+1739028280324	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1739028280324	FirefoxAccounts	DEBUG	getOAuthToken enter
+1739028280325	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1739028280325	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token
+1739028280325	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1739028280329	Services.Common.RESTRequest	DEBUG	GET request to https://api.accounts.firefox.com/v1/account/device/commands?index=149318371
+1739028280511	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile 304
+1739028280521	Services.Common.RESTRequest	DEBUG	GET https://api.accounts.firefox.com/v1/account/device/commands?index=149318371 200
+1739028280521	Hawk	DEBUG	(Response) /account/device/commands?index=149318371: code: 200 - Status text: 
+1739028280521	Hawk	DEBUG	Clock offset vs https://api.accounts.firefox.com/v1: -521
+1739028280537	Sync.Resource	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/info/collections
+1739028280537	Sync.Service	DEBUG	Fetching server configuration: https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/info/configuration
+1739028280538	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1739028280683	Sync.Resource	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/info/configuration
+1739028280684	Sync.Service	DEBUG	Fetching global metadata record
+1739028280684	Sync.Service	DEBUG	Weave Version: 1.133.0 Local Storage: 5 Remote Storage: 5
+1739028280684	Sync.Service	DEBUG	Fetching and verifying -- or generating -- symmetric keys.
+1739028280684	Sync.Service	INFO	Testing info/collections: {"clients":1739027682.01,"addons":1739027610.78,"forms":1739027638.41,"tabs":1739027813.96,"meta":1727513701.01,"prefs":1739027634.82,"crypto":1727513655.33,"passwords":1727513657.71,"history":1739027689.58,"creditcards":1727513858.06,"extension-storage":1735223888.2,"bookmarks":1739027682.91}
+1739028280684	Sync.CollectionKeyManager	INFO	Testing for updateNeeded. Last modified: 1727513655.33
+1739028280684	Sync.Synchronizer	DEBUG	Refreshing client list.
+1739028280685	Sync.Engine.Clients	DEBUG	Resetting clients last sync time
+1739028280688	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1739028280864	Sync.Collection	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/storage/clients?full=1&limit=1000
+1739028280868	Sync.Engine.Clients	INFO	Records: 1 applied, 1 successfully, 0 failed to apply, 0 newly failed to apply, 3 reconciled.
+1739028280868	Sync.Engine.Clients	DEBUG	Refreshing the known stale clients list
+1739028280869	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1739028280869	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1739028280871	Sync.Engine.Clients	INFO	Hiding stale client 49c2f73c9b8ebe32bfb8d4bf9bee190e - in known stale clients list
+1739028280872	Sync.Engine.Clients	INFO	Uploading 0 outgoing records
+1739028280873	Sync.SyncScheduler	DEBUG	Client count: 2 -> 3
+1739028280874	Sync.Synchronizer	INFO	Updating enabled engines: 3 clients.
+1739028280876	Sync.Synchronizer	INFO	Syncing all enabled engines.
+1739028280876	Sync.Engine.Prefs	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1739028280876	Sync.Engine.Prefs	INFO	Uploading 0 outgoing records
+1739028280882	Sync.Engine.Passwords	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1739028280883	Sync.Engine.Passwords	INFO	Uploading 0 outgoing records
+1739028280885	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1739028280885	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1739028280887	Sync.Engine.Tabs	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1739028280888	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1739028280889	Sync.Engine.Tabs	INFO	Posting 1 records of 1559 bytes with batch=true
+1739028280889	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1739028280890	Sync.Collection	DEBUG	POST Length: 1559
+1739028281069	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/storage/tabs?batch=true&commit=true
+1739028281075	Sync.Engine.Bookmarks	DEBUG	Checking if server sync ID EVM-wUnnv162 matches existing
+1739028281076	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1739028281238	Sync.Collection	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/storage/bookmarks?newer=1739027608.66&full=1&sort=oldest&limit=1000
+1739028281248	Sync.Engine.Bookmarks	INFO	Records: 4 applied, 4 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1739028281249	Sync.Engine.Bookmarks.Mirror	DEBUG	Merging bookmarks in Rust
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Building local tree
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Building remote tree
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Building merged tree
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Applying merged tree
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Updating local items in Places
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Cleaning up observer notifications left from last sync
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Inserting Places for new items
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Staging apply remote item ops
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Staging change GUID ops
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Staging apply new local structure ops
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Removing tombstones for revived items
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Inserting new tombstones for non-syncable and invalid items
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Removing local items
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Changing GUIDs
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Applying remote items
+1739028281252	Sync.Engine.Bookmarks.Mirror	DEBUG	Recording item added notifications for new items
+1739028281253	Sync.Engine.Bookmarks.Mirror	DEBUG	Recording item changed notifications for existing items
+1739028281253	Sync.Engine.Bookmarks.Mirror	DEBUG	Removing old keywords
+1739028281253	Sync.Engine.Bookmarks.Mirror	DEBUG	Removing old tags
+1739028281253	Sync.Engine.Bookmarks.Mirror	DEBUG	Upserting new items
+1739028281253	Sync.Engine.Bookmarks.Mirror	DEBUG	Flagging frecencies for recalculation
+1739028281253	Sync.Engine.Bookmarks.Mirror	DEBUG	Inserting new keywords for new URLs
+1739028281253	Sync.Engine.Bookmarks.Mirror	DEBUG	Inserting new tags for new URLs
+1739028281255	Sync.Engine.Bookmarks.Mirror	DEBUG	Applying new local structure
+1739028281255	Sync.Engine.Bookmarks.Mirror	DEBUG	Resetting change counters for items that shouldn't be uploaded
+1739028281256	Sync.Engine.Bookmarks.Mirror	DEBUG	Bumping change counters for items that should be uploaded
+1739028281256	Sync.Engine.Bookmarks.Mirror	DEBUG	Flagging applied remote items as merged
+1739028281256	Sync.Engine.Bookmarks.Mirror	DEBUG	Staging items to upload
+1739028281256	Sync.Engine.Bookmarks.Mirror	DEBUG	Cleaning up staged items left from last sync
+1739028281256	Sync.Engine.Bookmarks.Mirror	DEBUG	Staging items with older local dates added
+1739028281256	Sync.Engine.Bookmarks.Mirror	DEBUG	Staging remaining locally changed items for upload
+1739028281256	Sync.Engine.Bookmarks.Mirror	DEBUG	Staging structure to upload
+1739028281256	Sync.Engine.Bookmarks.Mirror	DEBUG	Staging tags to upload
+1739028281257	Sync.Engine.Bookmarks.Mirror	DEBUG	Staging tombstones to upload
+1739028281258	Sync.Engine.Bookmarks.Mirror	DEBUG	Merging bookmarks in Rust took 9.522ms
+1739028281258	Sync.Engine.Bookmarks.Mirror	DEBUG	Notifying Places observers
+1739028281261	Sync.Engine.Bookmarks.Mirror	DEBUG	Notifying Places observers took 2.316ms
+1739028281261	Sync.Engine.Bookmarks.Mirror	DEBUG	Fetching records for local items to upload
+1739028281262	Sync.Engine.Bookmarks.Mirror	DEBUG	Fetching records for local items to upload took 0.822ms
+1739028281262	Sync.Engine.Bookmarks	INFO	Uploading 0 outgoing records
+1739028281262	Sync.Engine.Bookmarks.BookmarkSyncUtils	DEBUG	pushChanges: Processed change records: {"weak":0,"skipped":0,"updated":0}
+1739028281263	Sync.Engine.Addons	DEBUG	Refreshing reconciler state
+1739028281263	Sync.AddonsReconciler	INFO	Refreshing global state from AddonManager.
+1739028281263	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Form Autofill (version=1.0.1, id=formautofill@mozilla.org)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Picture-In-Picture (version=1.0.0, id=pictureinpicture@mozilla.org)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Firefox Screenshots (version=39.0.1, id=screenshots@mozilla.org)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon WebCompat Reporter (version=2.1.0, id=webcompat-reporter@mozilla.org)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Web Compatibility Interventions (version=130.2.0, id=webcompat@mozilla.org)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon System theme — auto (version=1.3, id=default-theme@mozilla.org)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Add-ons Search Detection (version=2.0.0, id=addons-search-detection@mozilla.com)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Light (version=1.2, id=firefox-compact-light@mozilla.org)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Dark (version=1.2, id=firefox-compact-dark@mozilla.org)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Firefox Alpenglow (version=1.4, id=firefox-alpenglow@mozilla.org)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon mtab (version=1.7.9, id=contact@maxhu.dev)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon uBlock Origin (version=1.62.0, id=uBlock0@raymondhill.net)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon I don't care about cookies (version=3.5.0, id=jid1-KKzOGWgsW3Ao4Q@jetpack)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon SponsorBlock for YouTube - Skip Sponsorships (version=5.11.5, id=sponsorBlocker@ajay.app)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Ecosia - The search engine that plants trees (version=5.0.2, id={d04b0b40-3dab-4f0b-97a6-04ec3eddbfb0})
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Vimium (version=2.1.2, id={d7742d87-e61d-4b78-b8a1-b469842139fa})
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Electric Night (version=1.0, id={6b9e9413-a4e7-4109-87b6-f8eba1a95df3})
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Unhook - Remove YouTube Recommended & Shorts (version=1.6.7, id=myallychou@gmail.com)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Redirector (version=3.5.3, id=redirector@einaregilsson.com)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon OpenH264 Video Codec provided by Cisco Systems, Inc. (version=system-installed, id=gmp-gmpopenh264)
+1739028281264	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Widevine Content Decryption Module provided by Google Inc. (version=system-installed, id=gmp-widevinecdm)
+1739028281265	Sync.AddonsReconciler	INFO	Saving reconciler state to file: addonsreconciler
+1739028281266	Sync.Engine.Addons	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1739028281266	Sync.Engine.Addons	INFO	Uploading 0 outgoing records
+1739028281266	Sync.Engine.Addresses	DEBUG	First sync, uploading all items
+1739028281267	Sync.Engine.Addresses	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1739028281267	Sync.Engine.Addresses	INFO	Uploading 0 outgoing records
+1739028281267	Sync.Engine.CreditCards	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1739028281267	Sync.Engine.CreditCards	INFO	Uploading 0 outgoing records
+1739028281271	Sync.Engine.Forms	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1739028281274	Sync.Engine.Forms	INFO	Uploading 0 outgoing records
+1739028281274	Sync.Engine.History	DEBUG	Checking if server sync ID dEmJ7rL1ywmx matches existing
+1739028281280	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1739028282105	Sync.Collection	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/storage/history?newer=1739027638.81&full=1&sort=newest&limit=1000
+1739028282559	Sync.Engine.History.Store	DEBUG	adding 929 records to history
+1739011101A38	Sync.Engine.History	INFO	Records: 930 applied, 930 successfully, 0 failed to apply, 0 newly failed to apply, 4 reconciled.
+1739011101A38	Sync.Engine.History	INFO	Uploading 8 outgoing records
+1739011101A43	Sync.Engine.History	INFO	Posting 8 records of 5065 bytes with batch=true
+1739011101A43	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1739011101A44	Sync.Collection	DEBUG	POST Length: 5065
+1739028283039	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/263263936/storage/history?batch=true&commit=true
+1739028283042	Sync.Engine.Extension-Storage	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1739028283043	Sync.Engine.Extension-Storage	INFO	Uploading 0 outgoing records
+1739028283044	Sync.Doctor	INFO	Skipping check of prefs - disabled via preferences
+1739028283044	Sync.Doctor	INFO	Skipping check of passwords - disabled via preferences
+1739028283044	Sync.Doctor	INFO	Skipping check of tabs - disabled via preferences
+1739028283044	Sync.Doctor	INFO	Skipping check of bookmarks - disabled via preferences
+1739028283044	Sync.Doctor	INFO	Skipping check of addons - disabled via preferences
+1739028283044	Sync.Doctor	INFO	Skipping check of addresses - disabled via preferences
+1739028283044	Sync.Doctor	INFO	Skipping check of creditcards - disabled via preferences
+1739028283044	Sync.Doctor	INFO	Skipping check of forms - disabled via preferences
+1739028283044	Sync.Doctor	INFO	Skipping check of history - disabled via preferences
+1739028283044	Sync.Doctor	INFO	Skipping check of extension-storage - disabled via preferences
+1739028283044	Sync.Doctor	INFO	Skipping validation: no engines qualify
+1739028283044	Sync.Status	DEBUG	Status.sync: success.sync => success.sync
+1739028283044	Sync.Status	DEBUG	Status.service: success.status_ok => success.status_ok
+1739028283045	Sync.Synchronizer	INFO	Sync completed at 2025-02-08 16:24:43 after 2.72 secs.
+1739028283045	Sync.Declined	DEBUG	Handling remote declined: []
+1739028283045	Sync.Declined	DEBUG	Handling local declined: []
+1739028283045	Sync.Declined	DEBUG	Declined changed? false
+1739028283046	Sync.Service	INFO	No change to declined engines. Not reuploading meta/global.
+1739028283047	Sync.SyncScheduler	DEBUG	Next sync in 90000 ms. (why=schedule)

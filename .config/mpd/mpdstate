@@ -1,0 +1,64 @@
+sw_volume: 86
+audio_device_state:1:pulse audio
+audio_device_state:1:my_fifo
+state: pause
+current: 23
+time: 17.381000
+random: 0
+repeat: 1
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:Sora_ni_Hikaru_(From__Clannad_).mp3
+1:Nagisa__Parting_At_The_Foot_Of_The_Hill_[Warm_Piano_Arrange]_(From__Clannad_).mp3
+2:Toki_Wo_Kizamu_Uta_(From__Clannad_After_Story_).mp3
+3:Kamado_Tanjiro_No_Uta.mp3
+4:Alone.mp3
+5:Dango_Daikazoku.mp3
+6:Hurry,_Starfish.mp3
+7:Megumeru_(From__Clannad_The_Motion_Picture_).mp3
+8:Hakari_(Acoustic)_-_Instrumental.mp3
+9:Komorebi.mp3
+10:Mono_No_Aware.mp3
+11:Roaring_Tides.mp3
+12:Sakura.mp3
+13:Shining_In_The_Sky.mp3
+14:Akogare.mp3
+15:Hinode.mp3
+16:Ishin_denshin.mp3
+17:Omotenashi.mp3
+18:Oubaitori.mp3
+19:Setsunai.mp3
+20:Shinrin-yoku.mp3
+21:Shirohae.mp3
+22:Komeroshi.mp3
+23:Shoganai.mp3
+24:Snowfield_(Clannad_Original_Soundtrack).mp3
+25:Spring_Wind_(Clannad).mp3
+26:tea_party_in_the_reference_room.mp3
+27:The_Place_Where_Wishes_Come_True.mp3
+28:to_the_same_heights.mp3
+29:Ukiyo.mp3
+30:Ushio.mp3
+31:WHITE_ALBUM.mp3
+32:Yugen.mp3
+33:神様はじめました.mp3
+34:Roaring_Tides.mp3
+35:Toki_Wo_Kizamu_Uta_(From__Clannad_After_Story_).mp3
+36:Dango_Daikazoku.mp3
+37:Dango_Daikazoku.mp3
+38:Hurry,_Starfish.mp3
+39:Hurry,_Starfish.mp3
+40:Hurry,_Starfish.mp3
+41:Komorebi.mp3
+42:Komorebi.mp3
+43:Komorebi.mp3
+44:Mono_No_Aware.mp3
+45:Komeroshi.mp3
+46:Shoganai.mp3
+47:Ukiyo.mp3
+48:Yugen.mp3
+playlist_end

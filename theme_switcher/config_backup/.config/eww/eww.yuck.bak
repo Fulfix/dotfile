@@ -1,0 +1,131 @@
+
+;; Variables
+(defpoll HOUR :interval "59s" `date +"%H:%M"`)
+(defpoll name_music :interval "1s" "mpc current -f '%title%'")
+(defpoll volume :interval "0"
+  `amixer get Master | grep -m1 -o '[0-9]*%' | tr -d '%'`)
+(defpoll brightness :interval "0" `brightnessctl get`)
+(defpoll wifi_enabled :interval "1s"
+  "nmcli radio wifi | grep -q 'enabled' && echo true || echo false")
+(defpoll bluetooth_enabled :interval "1s"
+  `bluetoothctl show | awk '/Powered/ {print ($2 == "yes") ? "true" : "false"}'`)
+;; Volume slider widget
+(defwidget volume-slider []
+  (box :orientation "v"
+       :space-evenly false
+       :spacing 10
+    (label :text "Volume")
+    (scale :min 0
+           :max 100
+           :value volume
+           :onchange "amixer set Master {}%")))
+;; Brightness slider widget
+(defwidget brightness-slider []
+  (box :orientation "v"
+       :space-evenly false
+       :spacing 10
+    (label :text "Brightness")
+    (scale :min 0
+           :max 500
+           :value brightness
+           :onchange "brightnessctl set {}")))
+;;bluetooth
+(defwidget bluetooth-button []
+  (button :class "bluetooth-button ${bluetooth_enabled ? 'active' : ''}"
+          :onclick `bluetoothctl show | grep -q "Powered: yes" && bluetoothctl power off && echo "Bluetooth OFF" || bluetoothctl power on && echo "Bluetooth ON"`
+          
+    (box :space-evenly false
+         :spacing 10
+         :class "bluetooth-content"
+      (label :text {bluetooth_enabled ? "󰂯 ON" : "󰂲 OFF"} :class "bluetooth_text" ))))
+;;wifi
+(defwidget wifi-button []
+  (button :class "wifi-button ${wifi_enabled ? 'active' : ''}"
+          :onclick "nmcli radio wifi ${wifi_enabled ? 'off' : 'on'}"
+    (box :space-evenly false
+         :spacing 10
+         :class "wifi-content"
+      (label :text {wifi_enabled ? "" : ""})  ; Symboles WiFi (nécessite une police d'icônes)
+      (label :text {wifi_enabled ? "󰤨 ON" : "󰤭 OFF"}))))
+
+
+(defpoll headphone_batt :interval "2s"
+  "upower -i /org/freedesktop/UPower/devices/headset_dev_BC_A0_80_2A_F7_CF | grep -oE '[0-9]+%' | sed 's/%//'")
+
+(defwidget all_battery [] 
+  (box :class "bar"
+       :orientation "v"
+       :spacing 0
+
+      (label :class "device_name" :text "Buds3 Pro")
+    (circular-progress :class "thingy"
+                      :value {headphone_batt ?: 0}
+                      :thickness 5
+                      :clockwise true
+                      :start-at 75    ; Commence à 75 degrés (en haut)
+                      :min 0
+                      :max 100
+      (label :text "${headphone_batt}%"))
+      ))
+(defpoll status_music :interval "1s"
+  "mpc status | grep -q '\\[playing\\]' && echo  || echo ")
+(defpoll music_pourcentage :interval "1s" "mpc status | grep -oP '\\(\\d+%\\)' | tr -d '()%' | awk '{print $1+0}'")
+
+(defwidget w_player []
+  (box :spacing 0 :orientation "h" :space-evenly false :halign "center" :class "box_player"
+    (button :class "button_player" :onclick "mpc prev" (label :class "text_player" :text "󰙣"))
+    (button :class "button_player" :onclick "mpc toggle" (label :class "text_player" :text status_music))
+    (button :class "button_player" :onclick "mpc next" (label :class "text_player":text "󰙡"))
+  ))
+(defwidget music_time []
+  (box :spacing 0 :orientation "h" :space-evenly false :halign "left" :class "box_player_bis"
+
+    (scale :min 0
+           :max 100
+           :value music_pourcentage
+           :onchange "mpc seek {}%"))
+
+  )
+(defpoll path_image_music :interval "1s" `~/.config/scripts/cover_cc.sh`)
+
+(defwidget w_image_music []
+(box :class "cover-art"
+         :style "background-image: url('${path_image_music}')")
+)
+
+
+
+(defwindow cc
+  :monitor 0
+  :geometry (geometry :x "0"
+                     :y "0"
+                     :width "40%"
+                     :height "40%"
+                     :anchor "top center")
+  :stacking "fg"
+  (box :orientation "v"
+       :space-evenly false
+       :class "cc"
+    (volume-slider)
+    (brightness-slider)
+    (box :orientation "h"    ; Box horizontale pour la ligne des boutons et batterie
+         :space-evenly false ; Désactive la distribution égale de l'espace
+      (box :orientation "v"  ; Box verticale pour les boutons
+           :space-evenly false
+           :hexpand true     ; Permet aux boutons de prendre l'espace disponible
+           :spacing 10
+        (wifi-button)
+        (bluetooth-button))
+      (all_battery))
+    (box :orientation "h" :class "global_box_player" :space-evenly false
+    (w_image_music)
+    (box :orientation "v" :class "box_info" :space-evenly false
+    (box :orientation "h" :class "box_button" :space-evenly false
+    (label :class "text_music" :text name_music)
+    (w_player)
+    )
+    (music_time)
+    )
+
+    )
+    ))

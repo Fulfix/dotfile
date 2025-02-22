@@ -1,0 +1,93 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "fira code Nerd Font";
+    font-weight: bold;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #11101A;
+    border-radius: 10px;
+}
+#workspaces button {
+    min-width: 10px;
+    min-height: 10px;
+    border-radius: 500px;
+    background: #6E93CB;
+    transition: min-width 0.3s ease;
+    margin: 7px 5px;
+}
+
+#workspaces button.active {
+    min-width: 30px;
+    background: #ffffff;
+}
+#custom-wallpaper,
+#custom-cc,
+#custom-power,
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio {
+    padding: 0 10px;
+    margin: 6px 0;
+    color: #ffffff;
+    border-radius: 10px;
+}
+#custom-cc{
+    background-color: #6E93CB;
+}
+
+#clock {
+    background-color: #6E93CB;
+    margin-left: 10px;
+}
+
+#battery {
+    background-color: #6E93CB;
+}
+
+#battery.charging {
+    background-color: #CB841D;
+}
+
+
+#cpu {
+    background-color: #6E93CB;
+}
+
+#memory {
+    background-color: #6E93CB;
+}
+
+#temperature {
+    background-color: #6E93CB;
+}
+
+#temperature.critical {
+    background-color: #CA99A7;
+}
+
+#pulseaudio {
+    background-color: #6E93CB;
+}
+
+#pulseaudio.muted {
+    background-color: #8B7E4B;
+}
+
+#custom-wallpaper{
+    background-color: #6E93CB;
+    padding-right: 12px;
+}
+#custom-power{
+    background-color: #6E93CB;
+    margin-right: 10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right: 12px;
+}

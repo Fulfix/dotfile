@@ -1,0 +1,46 @@
+[theme.item_highlight_active]
+fg = "#965942"
+bg = "#423731"
+
+[theme.item_highlight_inactive]
+fg = "#965942"
+bg = "#423731"
+
+
+[theme.status_artist]
+fg = "#f6ec80"
+bg = "#423731"
+
+[theme.status_album]
+fg = "#f6ec80"
+bg = "#423731"
+
+[theme.album]
+fg = "#f6ec80"
+bg = "#423731"
+
+[theme.playing]
+fg = "#965942"
+
+[theme.paused]
+fg = "#965942"
+bg = "#423731"
+
+[theme.stopped]
+fg = "#965942"
+bg = "#423731"
+
+[theme.slash_span]
+fg = "#965942"
+bg = "#423731"
+
+[theme.search_query_active]
+fg = "#965942"
+bg = "#423731"
+
+[theme.search_query_inactive]
+fg = "#965942"
+bg = "#423731"
+[theme.block_active]
+fg = "#965942"
+

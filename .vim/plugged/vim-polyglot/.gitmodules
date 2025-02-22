@@ -1,0 +1,15 @@
+[submodule ".config/kitty/themes"]
+	path = .config/kitty/themes
+	url = https://github.com/wdomitrz/kitty_gruvbox_theme
+[submodule ".config/system24"]
+	path = .config/system24
+	url = https://github.com/refact0r/system24
+[submodule ".vim/plugged/gruvbox"]
+	path = .vim/plugged/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule ".vim/plugged/indentLine"]
+	path = .vim/plugged/indentLine
+	url = https://github.com/Yggdroot/indentLine.git
+[submodule ".vim/plugged/vim-polyglot"]
+	path = .vim/plugged/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git

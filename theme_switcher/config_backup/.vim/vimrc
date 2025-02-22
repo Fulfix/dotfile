@@ -1,0 +1,102 @@
+" Configuration initiale de Vim
+set nocompatible
+syntax on
+filetype plugin indent on
+
+" Gestionnaire de plugins
+call plug#begin()
+" Plugins essentiels
+Plug 'sheerun/vim-polyglot'
+Plug 'Yggdroot/indentLine'
+Plug 'preservim/tagbar'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'morhetz/gruvbox'
+call plug#end()
+
+" Configuration de base
+set cursorline
+set encoding=utf-8
+set hidden
+set number
+set relativenumber
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set autoindent
+set smartindent
+set mouse=a
+set nowrap
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set history=1000
+set undolevels=1000
+
+" Configuration des thèmes et couleurs
+if has('termguicolors')
+    set termguicolors
+endif
+
+" Configuration de Gruvbox
+set background=dark
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_italic=1
+let g:gruvbox_bold=1
+let g:gruvbox_underline=1
+let g:gruvbox_undercurl=1
+let g:gruvbox_sign_column='bg0'
+
+" Active le thème custom par défaut
+autocmd vimenter * ++nested colorscheme custom_theme
+
+
+" Configuration spécifique pour certains types de fichiers
+augroup gruvbox_customization
+    autocmd!
+    autocmd FileType python let g:gruvbox_improved_strings=1
+augroup END
+
+" Configuration de FZF
+let g:fzf_layout = { 'down': '~40%' }
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+
+" Mappings personnalisés
+" FZF
+nnoremap <C-p> :Files<CR>
+nnoremap <C-f> :Rg<CR>
+
+" Navigation rapide
+nnoremap <C-Space> :Ex $HOME<CR>
+
+" Raccourcis pour spliter les fenêtres
+nnoremap <C-w>v :vsplit<CR>
+nnoremap <C-w>s :split<CR>
+
+
+" Configuration des espaces et tabs visibles
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+
+" Configuration de IndentLine
+let g:indentLine_char = '¦'
+let g:indentLine_color_term = 239
+
+" Configuration de Tagbar
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+
+" Sauvegarde automatique
+set autowrite
+set autowriteall
+
+" Configuration de la recherche
+set path+=**
+set wildmenu
+set wildmode=list:longest,full
+
+" Backup et fichiers swap
+set nobackup
+set noswapfile
+set nowritebackup

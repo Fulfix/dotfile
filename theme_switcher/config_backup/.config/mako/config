@@ -1,0 +1,24 @@
+[general]
+# Paramètres de base
+font="Sans 12"
+timeout=5000
+max-visible=5
+
+[urgency-low]
+background-color=#11101A
+text-color=#6E93CB
+border-color=#ffffff
+border-size=2
+
+[urgency-normal]
+background-color=#11101A
+text-color=#6E93CB
+border-color=#ffffff
+border-size=2
+
+[urgency-high]
+background-color=#11101A
+text-color=#6E93CB
+border-color=#ffffff
+border-size=2
+

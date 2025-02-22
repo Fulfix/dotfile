@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "beige": "#f6ec80",
+    "brown": "#965942",
+    "dark": "#423731",
+    "tan": "#6a5950"
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": false,
+      "segments": [
+        {
+          "background": "#423731",
+          "foreground": "p:beige",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "template": " {{.HostName}} ",
+          "type": "session"
+        },
+        {
+          "background": "#965942",
+          "foreground": "p:beige",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "template": "{{.UserName}} ",
+          "type": "session"
+        },
+        {
+          "background": "#f6ec80",
+          "foreground": "p:dark",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "properties": {
+            "folder_icon": "\uf07b",
+            "home_icon": "\ueb06"
+          },
+          "template": "[{{.Path}}] ",
+          "type": "path"
+        }
+      ]
+    }
+  ],
+  "console_title_template": "{{if .Root}}[root] {{end}}{{.Shell}} in <{{.Folder}}>",
+  "final_space": true,
+  "version": 3
+}
+
+
