@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 if [ "$(whoami)" = 'root' ]; then
+    echo "run this script as an user"
     exit 1
 fi
 user=$(echo $USER)
