@@ -74,4 +74,5 @@ done
 pkill waybar && hyprctl dispatch exec waybar & >/dev/null
 pkill swaync && hyprctl dispatch exec swaync & >/dev/null
 
-pkill kitty
+kill -SIGUSR1 $(pgrep kitty)
+clear
