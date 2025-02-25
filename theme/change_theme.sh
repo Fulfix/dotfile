@@ -44,8 +44,8 @@ sudo cp -r /usr/share/sddm/themes/simple-sddm-2/ "$backup_dir"
 # Change wallpaper
 swww img --resize crop -t random $new_wallpaper
 magick $new_wallpaper  -blur 0x30 /home/$user/.config/wlogout/icons/blur.jpg
-sudo rm -f  /usr/share/sddm/themes/simple-sddm-2/Backgrounds/wallpaper.jpg
-sudo cp $new_wallpaper /usr/share/sddm/themes/simple-sddm-2/Backgrounds/wallpaper.jpg
+#sudo rm -f  /usr/share/sddm/themes/simple-sddm-2/Backgrounds/wallpaper.jpg
+#sudo cp $new_wallpaper /usr/share/sddm/themes/simple-sddm-2/Backgrounds/wallpaper.jpg
 # Replace colors in specified directories
 target_dirs=(
 "/home/$user/.config/hypr/hyprland.conf"
