@@ -5,7 +5,6 @@ if [ "$(whoami)" = 'root' ]; then
     exit 1
 fi
 user=$(echo $USER)
-echo $user
 ls /home/$user/theme/my_themes
 read -e -p "choose your theme: " new_theme
 
@@ -45,12 +44,25 @@ sudo cp -r /usr/share/sddm/themes/simple-sddm-2/ "$backup_dir"
 # Change wallpaper
 swww img --resize crop -t random $new_wallpaper
 magick $new_wallpaper  -blur 0x30 /home/$user/.config/wlogout/icons/blur.jpg
+sudo rm -f  /usr/share/sddm/themes/simple-sddm-2/Backgrounds/wallpaper.jpg
+sudo cp $new_wallpaper /usr/share/sddm/themes/simple-sddm-2/Backgrounds/wallpaper.jpg
 # Replace colors in specified directories
 target_dirs=(
-    "/home/$user/.config"
-    "/home/$user/.mozilla"
-    "/home/$user/.vim/colors"
-    "/usr/share/sddm/themes/simple-sddm-2/theme.conf"
+"/home/$user/.config/hypr/hyprland.conf"
+"/home/$user/.config/kitty/themes/gruvbox_dark.conf"
+"/home/$user/.config/waybar/style.css"
+"/home/$user/.config/eww/eww.scss"
+"/home/$user/.config/oh-my-posh/custom.json"
+"/home/$user/.config/wlogout/style.css"
+"/home/$user/.config/rofi/config.rasi"
+"/home/$user/.config/ranger/colorschemes/custom.py"
+"/home/$user/.config/inori/config.toml"
+"/home/$user/.config/swaync/style.css"
+"/home/$user/.config/system24/theme/flavors/rosepine.theme.css"
+"/home/$user/.config/system24/theme/system24.theme.css"
+"/home/$user/.vim/colors/custom_theme.vim"
+"/usr/share/sddm/themes/simple-sddm-2/theme.conf"
+"/home/$user/.mozilla/firefox/"
 )
 
 for dir in "${target_dirs[@]}"; do
@@ -66,13 +78,12 @@ sudo sed -i "s/$old_term_accent_color/$new_term_accent_color/g" /home/$user/.con
 sudo sed -i "s/$old_term_font_color/$new_term_font_color/g" /home/$user/.config/ranger/colorschemes/custom.py
 
 # Fix permissions
-for dir in ".config" "theme/config_backup/.mozilla" "theme/config_backup/.config" "theme/config_backup/.vim"; do
+for dir in ".mozilla" ".config" "theme/config_backup/.mozilla" "theme/config_backup/.config" "theme/config_backup/.vim"; do
     sudo chown -R $user:$user "/home/$user/$dir"
 done
 
 # Restart Waybar & SwayNC
 pkill waybar && hyprctl dispatch exec waybar & >/dev/null
 pkill swaync && hyprctl dispatch exec swaync & >/dev/null
-
+eval "$(dircolors  /home/$user/.config/dircolor)"
 kill -SIGUSR1 $(pgrep kitty)
-clear
