@@ -1,0 +1,140 @@
+@import "colors.scss";
+
+* {
+    all: unset;
+    font-family: "Fira code Nerd font", sans-serif;
+}
+
+.cc {
+    background-color: $background;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+label {
+    color: $foreground;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+scale trough {
+    all: unset;
+    background-color: $accent;
+    border-radius: 16px;
+    min-height: 28px;
+    min-width: 240px;
+    margin: 10px 10px;
+    margin-bottom: 20px;
+}
+
+scale trough highlight {
+    all: unset;
+    background-color: $foreground;
+    border-radius: 16px;
+}
+
+.volume-slider, .brightness-slider {
+    margin-bottom: 15px;
+}
+
+.wifi-button , .bluetooth-button {
+    min-height: 50px;
+    min-width: 380px;
+    margin-left: 10px;
+    background-color: $accent;
+    font-weight: 700;
+    border-radius: 16px;
+    transition: all 250ms ease;
+    margin-right: 25px;
+}
+
+.wifi-button.active , .bluetooth-button.active , .text.wifi-button.active , .text.bluetooth-button.active {
+    min-height: 50px;
+    min-width: 380px;
+    margin-left: 10px;
+    background-color: $background;
+    font-weight: 700;
+    border-radius: 16px;
+    transition: all 250ms ease;
+}
+
+.battery-progress{
+    color: $foreground;
+    background-color: $accent;
+}
+
+.cover-art{
+    min-height: 130px;
+    min-width: 130px;
+    margin-bottom: 15px;
+    border-radius: 16px;
+}
+
+.music-info{
+    margin-top: 30px;
+}
+
+.playback-controls{
+    margin-top: 25px;
+    margin-left: 10px;
+    background-color: $accent;
+    border-radius: 16px 16px 0 0;
+    padding:0  20px;
+}
+
+.music-button{
+    margin: 10px;
+}
+
+.text-music{
+    font-size: 20px;
+}
+
+.prev-text{
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.more-button {
+    background-color: $accent;
+    margin-left: 10px;
+    border-radius: 0 0 16px 16px;
+}
+
+.text.random-button,
+.text.repeat-button {
+    background-color: $background;
+    font-size: 20px;
+    margin-left: 15px;
+    margin-right: 10px;
+    padding: 5px 13px;
+    border-radius: 16px;
+    padding-left: 10px;
+}
+
+.text.repeat-button{
+    margin-left: 20px;
+}
+
+.random-button{
+    margin-left: 4px;
+}
+
+.text.random-button.active,
+.text.repeat-button.active {
+    background-color: $accent;
+    transition: all 200ms ease;
+    padding: 5px 13px;
+    border-radius: 16px;
+    padding-left: 10px;
+}
+
+.music-section {
+    margin-top: 20px;
+}
+
+.hours{
+    font-size: 80px;
+    font-weight: 700;
+    color: $accent;
+}

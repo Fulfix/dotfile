@@ -1,0 +1,170 @@
+
+/* fix urlbar being too high in ff 128 */
+* {
+  --urlbar-toolbar-height: 32px !important;
+  --urlbar-container-height: 32px !important;
+}
+
+/* Définition des couleurs personnalisées */
+:root {
+  --custom-bg: var(--tf-bg);
+  --custom-accent: var(--tf-acent);
+  --custom-highlight: var(--tf-border);
+}
+
+/* hide stuff */
+#userContext-icons,
+#translations-button-icon,
+#tracking-protection-icon-container,
+#star-button-box,
+.urlbar-page-action:not([hidden="true"]) {
+  display: var(--tf-display-urlbar-icons);
+}
+
+/* configurable navigation buttons */
+#back-button,
+#forward-button {
+  display: var(--tf-display-nav-buttons);
+}
+
+#identity-box[pageproxystate="valid"] {
+  &.verifiedDomain {
+    #identity-icon,
+    #identity-permission-box:not([hasSharingIcon]),
+    #permissions-granted-icon {
+      display: var(--tf-display-urlbar-icons) !important;
+    }
+    #permissions-granted-icon + box:has(image[sharing="true"]) {
+      margin-left: -4px;
+    }
+  }
+  &.mixedActiveBlocked {
+    #permissions-granted-icon,
+    #identity-permission-box:not([hasSharingIcon]) {
+      display: var(--tf-display-urlbar-icons) !important;
+    }
+    #permissions-granted-icon + box:has(image[sharing="true"]) {
+      margin-left: -4px;
+    }
+  }
+}
+
+/* Application globale du background */
+#navigator-toolbox,
+#nav-bar,
+#urlbar-background,
+#browser-bottombox,
+#PersonalToolbar,
+.browser-toolbar:not(.titlebar-color),
+#nav-bar-customization-target,
+.toolbar-items {
+  background-color: var(--custom-bg) !important;
+}
+
+/* Navbar avec bordures */
+#nav-bar {
+  margin: 8px 8px 2px;
+  padding: 4px !important;
+  border-top: var(--border-width) !important;
+  border-style: solid !important;
+  border-width: var(--border-width);
+  border-color: var(--tf-border) !important;
+  border-radius: var(--tf-rounding);
+  transition: border-color var(--tf-border-transition) !important;
+  
+  &:hover,
+  &:focus {
+    border-color: var(--tf-acent) !important;
+    border-width: var(--border-width) !important;
+  }
+  
+  &:not(:hover):not(:focus) {
+    border-color: var(--tf-border) !important;
+  }
+  
+  &::before {
+      color: var(--tf-border);
+    display: var(--tf-display-titles);
+    content: "navbar";
+    background-color: var(--custom-bg);
+    position: absolute;
+    margin: -16px 8px;
+    padding: 0 2px;
+  }
+  
+  &:hover::before {
+    color: var(--tf-acent) !important;
+  }
+  
+  &:not([urlbar-exceeds-toolbar-bounds]) {
+    overflow: unset !important;
+  }
+}
+
+#PersonalToolbar {
+  margin: 8px 8px 2px;
+  padding: 4px !important;
+  border-top: var(--border-width) !important;
+  border-style: solid !important;
+  border-width: var(--border-width);
+  border-color: var(--tf-border) !important;
+  border-radius: var(--tf-rounding);
+  transition: border-color var(--tf-border-transition) !important;
+  
+  &:hover,
+  &:focus {
+    border-color: var(--tf-acent) !important;
+  }
+  
+  &::before {
+    display: var(--tf-display-titles);
+    content: "bookmarks";
+    background-color: var(--custom-bg);
+    position: absolute;
+    margin: -1.25rem .4rem;
+    padding: 0 2px;
+  }
+  
+  &:hover::before {
+    color: var(--tf-acent) !important;
+  }
+}
+
+#PlacesToolbarItems {
+  display: flex;
+  justify-content: center;
+}
+
+toolbarbutton.bookmark-item:not(.subviewbutton) {
+  padding: 8px !important;
+}
+
+:root[tabsintitlebar] #toolbar-menubar[autohide="true"] {
+  --tab-min-height: fit-content !important;
+  min-height: fit-content !important;
+  padding-top: 3px !important;
+}
+
+.browser-toolbar {
+  &:not(.titlebar-color) {
+    background-color: var(--custom-bg) !important;
+  }
+}
+
+@media (-moz-bool-pref: "sidebar.revamp") {
+  #nav-bar::before {
+    margin: -1.35rem .75rem;
+    left: 0;
+  }
+  #urlbar-background {
+    background-color: var(--custom-bg) !important;
+  }
+  .titlebar-spacer[type="pre-tabs"],
+  .titlebar-spacer[type="post-tabs"] {
+    width: 0 !important;
+  }
+}
+*{
+    color: var(--tf-acent);
+}
+

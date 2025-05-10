@@ -1,0 +1,98 @@
+@import "../colors.css";
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "fira code Nerd Font";
+    font-weight: bold;
+    font-size: 14px;
+    min-height: 0;
+    color: @foreground;
+}
+
+window#waybar {
+    background: @background;
+    border-radius: 10px;
+}
+#workspaces button {
+    min-width: 10px;
+    min-height: 10px;
+    border-radius: 500px;
+    background: @accent;
+    transition: min-width 0.3s ease;
+    margin: 7px 5px;
+}
+
+#workspaces button.active {
+    min-width: 30px;
+    background: @foreground;
+}
+#custom-wallpaper,
+#custom-cc,
+#custom-power,
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio {
+    padding: 0 10px;
+    margin: 6px 0;
+    color: @foreground;
+    border-radius: 10px;
+}
+#custom-cc{
+    background-color: @accent;
+}
+
+#clock {
+    background-color: @accent;
+    margin-left: 10px;
+}
+#battery {
+    background-color: @accent;
+}
+
+#battery.charging {
+    background-color: #CB841D;
+}
+
+#cpu {
+    background-color: @accent;
+}
+
+#memory {
+    background-color: @accent;
+}
+
+#temperature {
+    background-color: @accent;
+}
+
+#temperature.critical {
+    background-color: #CA99A7;
+}
+
+#pulseaudio {
+    background-color: @accent;
+}
+
+#pulseaudio.muted {
+    background-color: #8B7E4B;
+}
+
+#custom-wallpaper{
+    background-color: @accent;
+    padding-right: 12px;
+}
+#custom-power{
+    background-color: @accent;
+    margin-right: 10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right: 12px;
+}
+tooltip {
+    background: @background;
+    border-radius: 10px;
+    border: solid @accent 2px;
+}

@@ -1,0 +1,194 @@
+;; Polling Functions
+(defpoll HOUR :interval "60s" `date +"%H:%M"`)
+
+;; Music Status Polling
+(defpoll name_music :interval "2s" "mpc current -f '%title%'")
+(defpoll artist_music :interval "2s" "mpc current -f '%artist%'")
+(defpoll status_music :interval "1s" "mpc status | grep -q '\\[playing\\]' && echo  || echo ")
+(defpoll music_pourcentage :interval "1s" "mpc status | grep -oP '\\(\\d+%\\)' | tr -d '()%'")
+(defpoll path_image_music :interval "5s" `bash ~/.config/scripts/path_image_music.sh`)
+
+;; System Status Polling
+(defpoll volume :interval "2s" `amixer get Master | grep -m1 -o '[0-9]*%' | tr -d '%'`)
+(defpoll brightness :interval "2s" `brightnessctl get`)
+(defpoll wifi_enabled :interval "1s" "nmcli radio wifi | grep -q 'enabled' && echo true || echo false")
+(defpoll bluetooth_enabled :interval "1s" "bluetoothctl show | grep 'Powered: yes' 1>/dev/null && echo true || echo false")
+(defpoll status_random :interval "1s" `mpc | grep -q 'random: on' && echo true || echo false`)
+(defpoll status_repeat :interval "1s" `mpc | grep -q 'repeat: on' && echo true || echo false`)
+(defpoll headphone_batt :interval "2s" "upower -i /org/freedesktop/UPower/devices/headset_dev_BC_A0_80_2A_F7_CF | grep -oE '[0-9]+%' | sed 's/%//' || echo 0")
+
+;; Generic Toggle Button Widget
+(defwidget toggle-button [?class ?text ?status ?command]
+  (button 
+    :class "toggle-button ${class} ${status ? '' : 'active'}"
+    :onclick command
+    (label :class "text ${class} ${status ? '' : 'active'}" :text text)))
+
+;; Volume Slider Widget
+(defwidget volume-slider []
+  (box 
+    :orientation "v"
+    :space-evenly false
+    :spacing 10
+    (label :text "Volume")
+    (scale 
+      :min 0 
+      :max 100 
+      :value volume
+      :onchange "amixer set Master {}%")))
+
+;; Brightness Slider Widget
+(defwidget brightness-slider []
+  (box 
+    :orientation "v"
+    :space-evenly false
+    :spacing 10
+    (label :text "Brightness")
+    (scale 
+      :min 0 
+      :max 500 
+      :value brightness
+      :onchange "brightnessctl set {}")))
+
+;; Bluetooth Toggle
+(defwidget bluetooth-button []
+  (toggle-button 
+    :class "bluetooth-button"
+    :text {bluetooth_enabled ? "󰂯 ON" : "󰂲 OFF"}
+    :status bluetooth_enabled
+    :command "bluetoothctl power ${bluetooth_enabled ? 'off' : 'on'}"))
+
+;; WiFi Toggle
+(defwidget wifi-button []
+  (toggle-button 
+    :class "wifi-button"
+    :text {wifi_enabled ? "󰤨 ON" : "󰤭 OFF"}
+    :status wifi_enabled
+    :command "nmcli radio wifi ${wifi_enabled ? 'off' : 'on'}"))
+
+;; Headphone Battery Widget
+(defwidget headphone-battery []
+  (box 
+    :class "battery-bar"
+    :orientation "v"
+    :spacing 0
+    (label 
+      :class "device-name" 
+      :text "Buds3 Pro")
+    (circular-progress 
+      :class "battery-progress"
+      :value {headphone_batt ?: 0}
+      :thickness 5
+      :clockwise true
+      :start-at 75
+      :min 0
+      :max 100
+      (label :text "${headphone_batt}%"))))
+
+;; Music Player Controls
+(defwidget music-player []
+  (box 
+    :spacing 0 
+    :orientation "v" 
+    :space-evenly false 
+    :class "music-player"
+    
+    ;; Playback Controls
+    (box 
+      :spacing 0 
+      :orientation "h" 
+      :space-evenly false 
+      :class "playback-controls"
+      (button :class "music-button" :onclick "mpc prev" (label :class "prev-text" :text "󰙣"))
+      (button :class "music-button" :onclick "mpc toggle" (label :text status_music :class "text-music"))
+      (button :class "music-button" :onclick "mpc next" (label :text "󰙡" :class "text-music")))
+    (box 
+      :spacing 0 
+      :orientation "h" 
+      :space-evenly false 
+      :class "more-button"
+      (toggle-button 
+        :class "random-button" 
+        :text "" 
+        :status status_random 
+        :command "mpc random ${status_random ? 'off' : 'on'}")
+      (toggle-button 
+        :class "repeat-button" 
+        :text "" 
+        :status status_repeat 
+        :command "mpc repeat ${status_repeat ? 'off' : 'on'}"))))
+
+    
+
+;; Music Progress and Info
+(defwidget music-info []
+  (box 
+    :spacing 0 
+    :orientation "v" 
+    :space-evenly false
+    :class "music-info"
+    (label :class "music-title" :text name_music)
+    (label :class "music-artist" :text artist_music)
+    (scale 
+      :min 0 
+      :max 100 
+      :value music_pourcentage 
+      :onchange "mpc seek {}%")))
+
+(defwidget w_image_music []
+(box :class "cover-art" :style "background-image: url('${path_image_music}');"
+))
+;; (defwidget w_image_music []
+;; (box :class "cover-art" 
+;; (image :path "${path_image_music}" )
+;; ))
+;; Main Control Center Window
+(defwindow cc
+  :monitor 0
+  :geometry (geometry 
+              :x "0" 
+              :y "0" 
+              :width "40%" 
+              :height "40%" 
+              :anchor "top center")
+  :stacking "fg"
+  (box 
+    :orientation "v"
+    :space-evenly false
+    :class "control-center"
+    
+    (volume-slider)
+    (brightness-slider)
+    
+    ;; System Toggles and Battery
+    (box 
+      :orientation "h"
+      :space-evenly false
+      (box 
+        :orientation "v"
+        :space-evenly false
+        :spacing 15
+        (wifi-button)
+        (bluetooth-button))
+      (headphone-battery))
+    
+    ;; Music Player Section
+    (box 
+      :orientation "h"
+      :space-evenly false
+      :class "music-section"
+      (w_image_music)
+      (music-info)
+      (music-player))))
+
+;; Clock Window
+(defwindow bg_clock
+  :monitor 0
+  :geometry (geometry 
+              :x "0" 
+              :y "250px" 
+              :anchor "top center") 
+  :stacking "bg"
+  (label 
+    :class "hours" 
+    :text HOUR))

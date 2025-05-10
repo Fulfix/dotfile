@@ -1,0 +1,5 @@
+* {
+    accent: #A45C6B;
+    rgbabackground: rgba(52, 68, 68, 0.8);
+    foreground: #D7A2AD;
+}

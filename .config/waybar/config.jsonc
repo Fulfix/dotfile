@@ -1,0 +1,77 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    "margin-top": 6,
+    "margin-left": 10,
+    "margin-right": 10,
+
+    "modules-left": ["clock", "hyprland/workspaces","custom/wallpaper"],
+    "modules-center": ["cpu", "custom/cc", "memory"],
+    "modules-right": ["pulseaudio", "battery","custom/power"],
+
+"hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        },
+        "on-click": "activate",
+        "height": 2,
+        "active-only": false,
+        "all-outputs": true
+    },
+
+    "clock": {
+        "format": " {:%H:%M}",
+        "format-alt": " {:%a, %d. %b  %H:%M}",
+        "tooltip": false
+    },
+
+
+    "cpu": {
+        "format": "󰻠 {usage}%",
+        "on-click": "kitty btop &",
+        "interval": 1
+    },
+
+    "custom/cc": {
+        "format": "  ",
+        "format-alt": "  ",
+        "tooltip": false,
+        "on-click": "eww o --toggle cc ",
+
+    },
+
+
+    "memory": {
+        "on-click": "kitty btop &",
+        "format": " {}%",
+        "interval": 1
+
+    },
+
+    "battery": {
+        "format": " {capacity}%",
+        "format-charging": "⚡ {capacity}%",
+        "format-plugged": " {capacity}%"
+
+    },
+
+    "pulseaudio": {
+        "format": " {volume}%",
+        "format-muted": " Muted"
+    },
+    "custom/wallpaper":{
+	    "format": "󰸉",
+        "tooltip": false,
+	    "on-click": "~/.config/scripts/wp && echo 'your_password' | sudo -S mv -f ~/.config/theme.conf /usr/share/sddm/themes/simple-sddm-2/ && sudo cp ~/.config/wallpaper/* /usr/share/sddm/themes/simple-sddm-2/Backgrounds"
+    },
+    "custom/power":{
+	    "format": "⏻",
+        "tooltip": false,
+	    "on-click": "wlogout -b 4"
+    }
+}
+
