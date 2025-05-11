@@ -94,7 +94,8 @@ ColorScheme extractColors(const string& imagePath) {
     ColorScheme colors;
     
     // Préparer la commande avec une taille sécurisée
-    string command = "~/.nvm/versions/node/v23.11.0/bin/ricemood -i " + imagePath + " -f ~/.config/ricemood";
+    string home = string(getenv("HOME"));
+    string command =  home + "/.nvm/versions/node/v23.11.0/bin/ricemood -i " + imagePath + " -f /home/thomas/.config/ricemood 2>/dev/null";
     
     // Exécuter la commande et capturer la sortie
     FILE *fp = popen(command.c_str(), "r");
@@ -122,7 +123,7 @@ ColorScheme extractColors(const string& imagePath) {
     pclose(fp);
     
     // Cas spécial pour cette image
-    if (imagePath == "~/.config/wallpaper/clannad.jpg") {
+    if (imagePath ==  home + "/.config/wallpaper/clannad.jpg") {
         colors.accent = "965942";
     }
     if (colors.accent.length() != 6 ||colors.background.length() != 6 ||colors.foreground.length() != 6 ){
@@ -150,24 +151,25 @@ bool generateConfigFiles(const string& imagePath, const ColorScheme& colors) {
     // Extraction du nom de base de l'image
     size_t lastSlash = imagePath.find_last_of("/");
     string basename_wallpaper = imagePath.substr(lastSlash + 1);
+    string home = string(getenv("HOME"));
     
     // Table de hachage pour stocker les paires fichier/contenu
     unordered_map<string, string> configFiles;
     
     // Préparer le contenu pour chaque fichier
-    configFiles["~/.config/colors.css"] = 
+    configFiles[home + "/.config/colors.css"] = 
         "@define-color foreground #" + colors.foreground + ";\n" +
         "@define-color background #" + colors.background + ";\n" +
         "@define-color rgbabackground " + "rgba(" + to_string(rgb_background.red) + ", " + to_string(rgb_background.green) + ", " + to_string(rgb_background.blue) + ", 0.8);\n"
         "@define-color accent #" + colors.accent + ";\n";
     
-    configFiles["~/.config/oh-my-posh/custom.json"] = 
+    configFiles[ home + "/.config/oh-my-posh/custom.json"] = 
         "{\n"
         "  \"$schema\": \"https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json\",\n"
         "  \"palette\": {\n"
         "    \"background\": \"0\",\n"
-        "    \"accent\": \"9\",\n"
-        "    \"font\": \"2\"\n"
+        "    \"accent\": \"11\",\n"
+        "    \"font\": \"7\"\n"
         "  },\n"
         "  \"blocks\": [\n"
         "    {\n"
@@ -212,7 +214,7 @@ bool generateConfigFiles(const string& imagePath, const ColorScheme& colors) {
         "}\n";
     
     // Contenu pour le fichier inori
-    //configFiles["~/.config/inori/config.toml"] = 
+    //configFiles[ home + "/.config/inori/config.toml"] = 
     //    "[theme.item_highlight_active]\n"
     //    "fg = \"#" + colors.foreground + "\"\n"
     //    "bg = \"#" + colors.accent + "\"\n\n"
@@ -248,16 +250,16 @@ bool generateConfigFiles(const string& imagePath, const ColorScheme& colors) {
     //    "[theme.block_active]\n"
     //    "fg = \"#" + colors.accent + "\"\n";
     
-    configFiles["~/.config/eww/colors.scss"] = 
+    configFiles[ home + "/.config/eww/colors.scss"] = 
         "$background: #" + colors.background + ";\n"
         "$foreground: #" + colors.foreground + ";\n"
         "$accent: #" + colors.accent + ";\n";
     
-    configFiles["~/.config/hypr/colors.conf"] = 
+    configFiles[ home + "/.config/hypr/colors.conf"] = 
         "$foreground = rgb(" + colors.foreground + ")\n"
         "$background = rgb(" + colors.background + ")\n";
     
-    configFiles["~/.config/kitty/kitty.conf"] = 
+    configFiles[ home + "/.config/kitty/kitty.conf"] = 
         "map cmd+c        copy_to_clipboard\n"
         "map cmd+v        paste_from_clipboard\n"
         "map super+backspace send_text all \x17\n"
@@ -273,23 +275,18 @@ bool generateConfigFiles(const string& imagePath, const ColorScheme& colors) {
         "italic_font      auto\n"
         "bold_italic_font auto\n"
         "color0 #" + colors.background + "\n"
-        "color1 #" + colors.accent+ "\n"
-        "color4 #" + colors.accent+ "\n"
-        "color6 #" + colors.accent+ "\n"
-        "color10 #" + colors.accent+ "\n"
-        "color11 #" + colors.accent + "\n"
+        "color11 #" + colors.accent+ "\n"
+        "color7 #" + colors.foreground+ "\n"
         "background   #" + colors.background + "\n" 
-        "foreground   #" + colors.foreground + "\n" 
-        "color2 #" + colors.foreground + "\n" 
-        "color9       #" + colors.accent + "\n";
-    configFiles["~/.config/rofi/colors.rasi"] = 
+        "foreground   #" + colors.foreground + "\n";
+    configFiles[ home + "/.config/rofi/colors.rasi"] = 
         "* {\n"
         "    accent: #" + colors.accent + ";\n"
         "    rgbabackground: rgba(" + to_string(rgb_background.red) + ", " + to_string(rgb_background.green) + ", " + to_string(rgb_background.blue) + ", 0.8);\n"
         "    foreground: #" + colors.foreground + ";\n"
         "}";
     
-    configFiles["~/.cache/wal/colors.json"] = 
+    configFiles[ home + "/.cache/wal/colors.json"] = 
         "{\n"
         "    \"wallpaper\": \"" + imagePath + "\",\n"
         "    \"alpha\": \"100\",\n\n"
@@ -318,7 +315,7 @@ bool generateConfigFiles(const string& imagePath, const ColorScheme& colors) {
         "    }\n"
         "}";
     
-    configFiles["~/.config/nvim/colors/colors-wal.vim"] = 
+    configFiles[ home + "/.config/nvim/colors/colors-wal.vim"] = 
         "\" Nom du thème\n"
         "set background=dark\n"
         "highlight clear\n"
@@ -354,7 +351,7 @@ bool generateConfigFiles(const string& imagePath, const ColorScheme& colors) {
         "hi Pmenu guifg=#" + colors.foreground + " guibg=#" + colors.accent + "\n"
         "hi PmenuSel guifg=#" + colors.accent + " guibg=#" + colors.foreground + "\n";
     
-    configFiles["~/.config/theme.conf"] =  "[General]\n"
+    configFiles[ home + "/.config/theme.conf"] =  "[General]\n"
         "MainColor=\"#" + colors.accent + "\"\n"
         "AccentColor=\"#" + colors.accent + "\"\n"
         "IconColor=\"#" + colors.accent + "\"\n"
@@ -411,9 +408,6 @@ bool generateConfigFiles(const string& imagePath, const ColorScheme& colors) {
             rgb_background.red, rgb_background.green, rgb_background.blue);
     string jsp = exec(cmd);
     string lsoutput = exec("ls -l /dev/pts");
-    cout << lsoutput << endl; 
-    cout << cmd << endl;
-    cout << jsp << endl;
     return success;
 }
 
@@ -468,7 +462,7 @@ string showRofiSelector(const vector<string>& items) {
     //out.close();
     
     // Afficher le menu rofi
-    string cmd = "bash ~/.config/scripts/rofi.sh";
+    string cmd = "bash /home/thomas//.config/scripts/rofi.sh";
     string selected = exec(cmd.c_str());
     
     // Supprimer les espaces et retours à la ligne
@@ -480,12 +474,13 @@ string showRofiSelector(const vector<string>& items) {
 
 // Fonction principale
 int main(int argc, char **argv) {
+    string home = string(getenv("HOME"));
     if (getuid() == 0){
         cerr << "run this script with user privilege" << endl;
         return 1;
     }
     // Définition des variables
-    string wallpaper_dir = "~/.config/wallpaper/";
+    string wallpaper_dir =  home + "/.config/wallpaper/";
     vector<string> services_to_restart = {"waybar", "eww", "swaync"};
     
     string selected_wallpaper;
@@ -537,9 +532,10 @@ int main(int argc, char **argv) {
     exec_background("pywalfox update");
     
     // Mettre à jour oh-my-posh
-    system("eval \"$(oh-my-posh init bash --config ~/.config/oh-my-posh/custom.json)\"");
+    system("eval \"$(oh-my-posh init bash --config /home/thomas/.config/oh-my-posh/custom.json)\"");
     
     // Démarrer l'horloge en arrière-plan
     exec_background("eww o bg_clock");
     return 0;
 }
+
