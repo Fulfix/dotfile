@@ -95,7 +95,7 @@ ColorScheme extractColors(const string& imagePath) {
     
     // Préparer la commande avec une taille sécurisée
     string home = string(getenv("HOME"));
-    string command =  home + "/.nvm/versions/node/v23.11.0/bin/ricemood -i " + imagePath + " -f /home/thomas/.config/ricemood 2>/dev/null";
+    string command =  home + "/.nvm/versions/node/v23.11.0/bin/ricemood -i " + imagePath + " -f " + home + "/.config/ricemood 2>/dev/null";
     
     // Exécuter la commande et capturer la sortie
     FILE *fp = popen(command.c_str(), "r");
@@ -449,6 +449,7 @@ vector<string> getWallpapers(const string& directory) {
 
 // Fonction pour afficher le sélecteur rofi
 string showRofiSelector(const vector<string>& items) {
+    string home = string(getenv("HOME"));
     // Préparer la liste pour rofi
     //string item_list = "";
     //for (const auto& item : items) {
@@ -462,7 +463,7 @@ string showRofiSelector(const vector<string>& items) {
     //out.close();
     
     // Afficher le menu rofi
-    string cmd = "bash /home/thomas//.config/scripts/rofi.sh";
+    string cmd = "bash " + home + "/.config/scripts/rofi.sh";
     string selected = exec(cmd.c_str());
     
     // Supprimer les espaces et retours à la ligne
@@ -532,7 +533,7 @@ int main(int argc, char **argv) {
     exec_background("pywalfox update");
     
     // Mettre à jour oh-my-posh
-    system("eval \"$(oh-my-posh init bash --config /home/thomas/.config/oh-my-posh/custom.json)\"");
+    system("eval \"$(oh-my-posh init bash --config $HOME/.config/oh-my-posh/custom.json)\"");
     
     // Démarrer l'horloge en arrière-plan
     exec_background("eww o bg_clock");
