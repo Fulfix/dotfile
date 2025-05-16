@@ -13,21 +13,14 @@ printg() {
     printf "\033[32m%s\033[0m\n" "$1"
 }
 
-# Vérification des droits d'administrateur
-check_admin() {
-    if [ "$(id -u)" -ne 0 ] && ! sudo -n true 2>/dev/null; then
-        printr "Ce script nécessite des droits d'administration pour certaines opérations."
-        printr "Veuillez vous assurer que vous pouvez utiliser sudo."
-        exit 1
-    fi
-}
 
 # Vérification du dossier de dotfiles
-if [ ! -d ".config" ]; then
+if [ ! -d "share/.config" ]; then
     printr "Vous devez exécuter ce script dans le répertoire des dotfiles"
     exit 1
+else
+    root_dir=$(pwd)
 fi
-
 # Création du dossier cloned s'il n'existe pas
 if [ ! -d "cloned" ]; then
     mkdir -p cloned
@@ -35,6 +28,9 @@ fi
 
 # Installation de textfox
 install_text() {
+	if [ ! -d "$HOME/.cache/wal/" ]; then
+		mkdir -p $HOME/.cache/wal
+	fi
     git clone https://github.com/Fulfix/textfox
     cd textfox
     chmod +x tf-install.sh
@@ -42,7 +38,6 @@ install_text() {
         printr "error occured with textfox installation"
         exit 1
     fi
-    cd ..
 }
 
 # Installation des configurations
@@ -50,11 +45,11 @@ install_config() {
     if [ ! -d "$HOME/.config" ]; then
         mkdir "$HOME/.config"
     fi
-    if ! cp -r "$HOME/.config" "$HOME/backup"; then
+    if ! cp -rf "$HOME/.config" "$HOME/backup"; then
         printr "an error occured with the backup of .config"
         exit 1
     fi
-    if ! cp "$HOME/.bashrc" "$HOME/backup"; then
+    if ! cp -f "$HOME/.bashrc" "$HOME/backup"; then
         printr "an error occured with the backup of .bashrc"
         exit 1
     fi
@@ -67,9 +62,15 @@ install_config() {
     if [ ! -d /etc/sddm.conf.d ]; then
         sudo mkdir -p /etc/sddm.conf.d
     fi
-    sudo cp share/simple-sddm-2.conf /etc/sddm.conf.d
-    sudo systemctl enable sddm
-    sudo systemctl start sddm
+    sudo cp -f share/simple-sddm-2.conf /etc/sddm.conf.d
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    cd ~/.local/share/nvim/plugged/markdown-preview.nvim
+    npm install 
+    cd $root_dir
+    sudo 
+    systemctl --user enable mpd
+    systemctl --user start mpd
+    printb "disable your actual display manager and enable sddm"
 }
 
 # Vérification de la connexion internet
@@ -128,7 +129,7 @@ build_cargo_project() {
     else
         printb "Le dépôt $repo_dir existe déjà, vérification des mises à jour..."
         cd "$repo_dir" || return 1
-        git pull || return 1
+        sudo git pull || return 1
         cd ..
     fi
     
@@ -136,11 +137,11 @@ build_cargo_project() {
     printb "Compilation de $bin_name..."
     cargo build --release $cargo_args || return 1
     chmod +x "target/release/$bin_name" || return 1
-    sudo cp "target/release/$bin_name" /usr/local/bin/ || return 1
+    sudo cp -f "target/release/$bin_name" /usr/local/bin/ || return 1
     
     if [ "$bin_name" = "swww" ]; then
         # Copie également swww-daemon pour swww
-        sudo cp "target/release/swww-daemon" /usr/local/bin/ || return 1
+        sudo cp -f "target/release/swww-daemon" /usr/local/bin/ || return 1
     fi
     
     cd ../.. || return 1
@@ -149,16 +150,16 @@ build_cargo_project() {
 
 # Installation pour Fedora
 fedora() {
-    check_admin
     check_internet
     check_update "fedora"
     printb "Installation des paquets pour Fedora..."
     
     # Paquets communs pour toutes les architectures
-    common_packages="fastfetch kitty hyprland mpd mpc neovim rofi-wayland waybar wlogout sddm cargo npm git python3-pip flatpak"
+    common_packages="fastfetch kitty hyprland mpd mpc neovim rofi-wayland waybar wlogout sddm cargo npm git python3-pip flatpak lz4-devel glib2-devel gtk3-devel libdbusmenu-gtk3-devel gtk-layer-shell-devel  gcc-c++"
     
     if [[ "$(uname -m)" == "aarch64" ]]; then
-        sudo dnf install -y $common_packages swaynotificationcenter
+	    sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+        sudo dnf install -y $common_packages SwayNotificationCenter 
         if [ $? -ne 0 ]; then
             printr "Erreur lors de l'installation des paquets"
             exit 1
@@ -166,7 +167,7 @@ fedora() {
         
         # Construction des projets cargo
         build_cargo_project "https://github.com/LGFae/swww" "swww" "swww" "" || printr "Erreur lors de la compilation de swww"
-        build_cargo_project "https://github.com/Fulfix/inori" "inori" "inori" "-r" || printr "Erreur lors de la compilation de inori"
+        build_cargo_project "https://github.com/Fulfix/inori" "inori" "inori" || printr "Erreur lors de la compilation de inori"
         build_cargo_project "https://github.com/elkowar/eww" "eww" "eww" "--no-default-features --features=wayland" || printr "Erreur lors de la compilation de eww"
         
         # Installation de hyprshot
@@ -198,7 +199,6 @@ fedora() {
     sudo cp -rf share/Bibata-Modern-Classic /usr/share/icons/ || printr "Erreur lors de la copie des icônes"
     sudo mkdir -p /usr/share/icons/default/ || printr "Erreur lors de la création du dossier d'icônes par défaut"
     sudo cp -rf share/Bibata-Modern-Classic/* /usr/share/icons/default/ || printr "Erreur lors de la copie des icônes par défaut"
-    install_text
     
     # Installation de OhMyPosh
     printb "Installation de OhMyPosh..."
@@ -207,6 +207,7 @@ fedora() {
     # Installation de pywalfox
     printb "Installation de pywalfox..."
     pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1 || printr "Erreur lors de l'installation de pywalfox"
+
     
     # Utilisation du bon navigateur selon l'architecture
     if [[ "$(uname -m)" == "aarch64" ]]; then
@@ -217,7 +218,7 @@ fedora() {
     
     # Installation de ricemood
     printb "Installation de ricemood..."
-    npm install -g ricemood || printr "Erreur lors de l'installation de ricemood"
+    sudo npm install -g ricemood || printr "Erreur lors de l'installation de ricemood"
     
     # Configuration de Flatpak pour aarch64
     if [[ "$(uname -m)" == "aarch64" ]]; then
@@ -227,12 +228,13 @@ fedora() {
     fi
     
     install_config
+    install_text
+    g++ ~/.config/scripts/theme_manager.cpp -o ~/.config/scritps/wp
     printg "Installation terminée avec succès!"
 }
 
 # Installation pour Arch
 arch() {
-    check_admin
     check_internet
     check_update "arch"
     printb "Installation des paquets pour Arch Linux..."
@@ -286,7 +288,6 @@ arch() {
 
 # Installation pour Alpine
 alpine() {
-    check_admin
     check_internet
     check_update "alpine"
     printb "Installation des paquets pour Alpine Linux..."
