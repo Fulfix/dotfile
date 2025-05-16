@@ -155,7 +155,7 @@ fedora() {
     printb "Installation des paquets pour Fedora..."
     
     # Paquets communs pour toutes les architectures
-    common_packages="fastfetch kitty hyprland mpd mpc neovim rofi-wayland waybar wlogout sddm cargo npm git python3-pip flatpak lz4-devel glib2-devel gtk3-devel libdbusmenu-gtk3-devel gtk-layer-shell-devel  gcc-c++"
+    common_packages="fastfetch kitty hyprland mpd mpc neovim rofi-wayland waybar wlogout sddm cargo npm git python3-pip flatpak lz4-devel glib2-devel gtk3-devel libdbusmenu-gtk3-devel gtk-layer-shell-devel  gcc-c++ kwin lsd"
     
     if [[ "$(uname -m)" == "aarch64" ]]; then
 	    sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
