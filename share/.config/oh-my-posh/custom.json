@@ -2,8 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
     "background": "0",
-    "accent": "9",
-    "font": "2"
+    "accent": "11",
+    "font": "7"
   },
   "blocks": [
     {

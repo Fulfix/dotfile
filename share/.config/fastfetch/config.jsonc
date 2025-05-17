@@ -97,6 +97,9 @@
           "key": " └  ",
           "keyColor": "33",
       },
+       {
+      "type": "colors",
+    },
       "break",
       "break",
   ]

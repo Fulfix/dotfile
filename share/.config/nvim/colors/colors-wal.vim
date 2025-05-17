@@ -11,28 +11,28 @@ set number
 set nocursorline
 
 " Interface générale
-hi Normal guifg=#D7A2AD guibg=NONE
-hi LineNr guifg=#D7A2AD
+hi Normal guifg=#F6EC80 guibg=NONE
+hi LineNr guifg=#F6EC80
 hi CursorLine NONE ctermbg=NONE guibg=NONE
-hi CursorLineNr guifg=#A45C6B gui=NONE cterm=NONE
-hi Visual guibg=#A45C6B
+hi CursorLineNr guifg=#965942 gui=NONE cterm=NONE
+hi Visual guibg=#965942
 
 " Syntaxe
-hi Comment guifg=#A45C6B
-hi String guifg=#D7A2AD
-hi Number guifg=#D7A2AD
-hi Function guifg=#D7A2AD
-hi Keyword guifg=#A45C6B
-hi Statement guifg=#A45C6B
-hi Identifier guifg=#D7A2AD
-hi PreProc guifg=#A45C6B
-hi Type guifg=#D7A2AD
-hi Special guifg=#D7A2AD
-hi Error guifg=#D7A2AD guibg=#A45C6B
+hi Comment guifg=#965942
+hi String guifg=#F6EC80
+hi Number guifg=#F6EC80
+hi Function guifg=#F6EC80
+hi Keyword guifg=#965942
+hi Statement guifg=#965942
+hi Identifier guifg=#F6EC80
+hi PreProc guifg=#965942
+hi Type guifg=#F6EC80
+hi Special guifg=#F6EC80
+hi Error guifg=#F6EC80 guibg=#965942
 
 " Menus et statut
-hi StatusLine guifg=#D7A2AD guibg=#A45C6B
-hi StatusLineNC guifg=#A45C6B guibg=#A45C6B
-hi VertSplit guifg=#A45C6B guibg=#A45C6B
-hi Pmenu guifg=#D7A2AD guibg=#A45C6B
-hi PmenuSel guifg=#A45C6B guibg=#D7A2AD
+hi StatusLine guifg=#F6EC80 guibg=#965942
+hi StatusLineNC guifg=#965942 guibg=#965942
+hi VertSplit guifg=#965942 guibg=#965942
+hi Pmenu guifg=#F6EC80 guibg=#965942
+hi PmenuSel guifg=#965942 guibg=#F6EC80

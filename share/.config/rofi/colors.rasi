@@ -1,5 +1,5 @@
 * {
-    accent: #A45C6B;
-    rgbabackground: rgba(52, 68, 68, 0.8);
-    foreground: #D7A2AD;
+    accent: #965942;
+    rgbabackground: rgba(66, 55, 49, 0.8);
+    foreground: #F6EC80;
 }

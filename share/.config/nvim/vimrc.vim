@@ -78,7 +78,7 @@ let g:mkdp_auto_start = 1
 " set to 1, the nvim will auto close current preview window when changing
 " from Markdown buffer to another buffer
 " default: 1
-let g:mkdp_auto_close = 1
+let g:mkdp_auto_close = 0
 
 " set to 1, Vim will refresh Markdown when saving the buffer or
 " when leaving insert mode. Default 0 is auto-refresh Markdown as you edit or
@@ -117,7 +117,7 @@ let g:mkdp_echo_preview_url = 1
 " this function will receive URL as param
 " default is empty
   function OpenMarkdownPreview (url)
-    execute "!/usr/local/bin/librewolf --new-window " . a:url
+    execute "!/usr/local/bin/librewolf" a:url
   endfunction
   let g:mkdp_browserfunc = 'OpenMarkdownPreview'
 " options for Markdown rendering
@@ -149,6 +149,10 @@ let g:mkdp_echo_preview_url = 1
 "     \ 'toc': {}
 "     \ }
 let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
     \ 'disable_sync_scroll': 0,
     \ 'sync_scroll_type': 'middle',
     \ 'hide_yaml_meta': 1,
@@ -156,9 +160,8 @@ let g:mkdp_preview_options = {
     \ 'flowchart_diagrams': {},
     \ 'content_editable': v:false,
     \ 'disable_filename': 0,
-    \ 'toc': 0
+    \ 'toc': {}
     \ }
-
 " use a custom Markdown style. Must be an absolute path
 " like '/Users/username/markdown.css' or expand('~/markdown.css')
 " let g:mkdp_markdown_css = '~/.config/nvim/mardown.css'

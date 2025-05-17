@@ -94,7 +94,6 @@ element.selected.normal {
   border-color: @rgbabackground;
   scrollbar: false;
   columns: 4;
-  lines: 5;
   border: 0px;
 }
 
