@@ -44,12 +44,10 @@ install_config() {
     fi
     cp -f share/.bashrc "$HOME/"
     cp -rf share/.config "$HOME/"
-    if [ -f "$HOME"/.config/hypr/hyprland.conf ]; then
-        password=""
-        read -p "type your password: " $password
-        sed -i 's/your_password/"$password"/g' ~/.config/hypr/hyprland.conf
-        sed -i 's/your_password/"$password"/g' ~/.config/waybar/config.jsonc
-    fi
+	password=""
+	read -p "type your password: " password
+	sed -i "s/your_password/$password/g" ~/.config/hypr/hyprland.conf
+	sed -i "s/your_password/$password/g" ~/.config/waybar/config.jsonc
 
     if [ ! -d /usr/share/sddm/themes ]; then
         sudo mkdir -p /usr/share/sddm/themes
