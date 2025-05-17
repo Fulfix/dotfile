@@ -52,8 +52,7 @@ install_config() {
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     cd ~/.local/share/nvim/plugged/markdown-preview.nvim
     npm install 
-    cd $root_dir
-    sudo 
+    cd $root_dir 
     systemctl --user enable mpd
     systemctl --user start mpd
     printb "disable your actual display manager to continue"
