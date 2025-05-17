@@ -26,24 +26,6 @@ if [ ! -d "cloned" ]; then
     mkdir -p cloned
 fi
 
-# Installation de textfox
-install_fox () {
-    sudo -y dnf install python3 python3-pip libnotify
-    git clone https://github.com/Floorp-Projects/Floorp.git
-    git submodule update --init --recursive
-    cd Floorp
-    ./mach bootstrap
-    echo 'ac_add_options --with-branding=browser/branding/official' >> mozconfig
-    echo 'ac_add_options --with-app-basename=Floorp' >> mozconfig
-    echo 'ac_add_options --with-app-name=floorp' >> mozconfig
-    echo "ac_add_options --enable-bootstrap" >> mozconfig
-
-    // build Floorp
-    ./mach configure
-    ./mach build
-    ./mach run
-}
-
 # Installation des configurations
 install_config() {
     if [ ! -d "$HOME/.config" ]; then
@@ -186,7 +168,15 @@ fedora() {
         fi
         sudo ln -sf "$(pwd)/Hyprshot/hyprshot" /usr/local/bin
         chmod +x Hyprshot/hyprshot
-        cd ..
+        cd $root_dir
+        # install pywalfox
+        pip install pywalfox
+        pywalfox install
+        firefox about:profiles & 
+        git clone https://github.com/Fulfix/textfox
+        cd textfox
+        bash tf-install.sh
+        cd $root_dir
         
     elif [[ "$(uname -m)" == "x86_64" ]]; then
         sudo dnf install -y $common_packages SwayNotificationCenter hyprshot librewolf
@@ -199,6 +189,14 @@ fedora() {
         build_cargo_project "https://github.com/LGFae/swww" "swww" "swww" "" || printr "Erreur lors de la compilation de swww"
         build_cargo_project "https://github.com/Fulfix/inori" "inori" "inori" "-r" || printr "Erreur lors de la compilation de inori"
         build_cargo_project "https://github.com/elkowar/eww" "eww" "eww" "--no-default-features --features=wayland" || printr "Erreur lors de la compilation de eww"
+
+        #install pywalfox for librewolf
+        pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1
+        pywalfox install --browser librewolf
+        git clone https://github.com/Fulfix/textfox
+        cd textfox
+        bash tf-install.sh
+        cd $root_dir
     fi
     
     # Actions communes aux deux architectures
@@ -239,107 +237,8 @@ fedora() {
 
 # Installation pour Arch
 arch() {
-    check_internet
-    check_update "arch"
-    printb "Installation des paquets pour Arch Linux..."
-    
-    # Installation des paquets de base
-    sudo pacman -S --noconfirm fastfetch kitty hyprland mpd mpc neovim rofi swaync waybar wlogout sddm cargo git npm python-pip
-    if [ $? -ne 0 ]; then
-        printr "Erreur lors de l'installation des paquets"
-        exit 1
-    fi
-    
-    # Construction des projets cargo
-    build_cargo_project "https://github.com/LGFae/swww" "swww" "swww" "" || printr "Erreur lors de la compilation de swww"
-    build_cargo_project "https://github.com/Fulfix/inori" "inori" "inori" "-r" || printr "Erreur lors de la compilation de inori"
-    build_cargo_project "https://github.com/elkowar/eww" "eww" "eww" "--no-default-features --features=wayland" || printr "Erreur lors de la compilation de eww"
-    
-    # Installation de hyprshot
-    cd cloned || exit 1
-    if [ ! -d "Hyprshot" ]; then
-        git clone https://github.com/Gustash/hyprshot.git Hyprshot
-    else
-        cd Hyprshot && git pull && cd ..
-    fi
-    sudo ln -sf "$(pwd)/Hyprshot/hyprshot" /usr/local/bin
-    chmod +x Hyprshot/hyprshot
-    cd ..
-    
-    # Installation des polices et icônes
-    sudo cp -f share/FiraCodeNerdFont-Medium.ttf /usr/share/fonts/ || printr "Erreur lors de la copie de la police"
-    sudo cp -rf share/Bibata-Modern-Classic /usr/share/icons/ || printr "Erreur lors de la copie des icônes"
-    sudo mkdir -p /usr/share/icons/default/ || printr "Erreur lors de la création du dossier d'icônes par défaut" 
-    sudo cp -rf share/Bibata-Modern-Classic/* /usr/share/icons/default/ || printr "Erreur lors de la copie des icônes par défaut"
-    
-    # Installation de OhMyPosh
-    printb "Installation de OhMyPosh..."
-    curl -s https://ohmyposh.dev/install.sh | bash -s || printr "Erreur lors de l'installation de OhMyPosh"
-    
-    # Installation de pywalfox
-    printb "Installation de pywalfox..."
-    pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1 || printr "Erreur lors de l'installation de pywalfox"
-    pywalfox install --browser firefox || printr "Erreur lors de l'installation de pywalfox pour firefox"
-    
-    # Installation de ricemood
-    printb "Installation de ricemood..."
-    npm install -g ricemood || printr "Erreur lors de l'installation de ricemood"
-    
-    install_config
-    printg "Installation terminée avec succès!"
-}
-
-# Installation pour Alpine
-alpine() {
-    check_internet
-    check_update "alpine"
-    printb "Installation des paquets pour Alpine Linux..."
-    
-    # Installation des paquets de base
-    sudo apk add fastfetch kitty hyprland mpd mpc neovim rofi swaync waybar wlogout sddm cargo git npm py3-pip
-    if [ $? -ne 0 ]; then
-        printr "Erreur lors de l'installation des paquets"
-        exit 1
-    fi
-    
-    # Construction des projets cargo
-    build_cargo_project "https://github.com/LGFae/swww" "swww" "swww" "" || printr "Erreur lors de la compilation de swww"
-    build_cargo_project "https://github.com/Fulfix/inori" "inori" "inori" "-r" || printr "Erreur lors de la compilation de inori"
-    build_cargo_project "https://github.com/elkowar/eww" "eww" "eww" "--no-default-features --features=wayland" || printr "Erreur lors de la compilation de eww"
-    
-    # Installation de hyprshot
-    cd cloned || exit 1
-    if [ ! -d "Hyprshot" ]; then
-        git clone https://github.com/Gustash/hyprshot.git Hyprshot
-    else
-        cd Hyprshot && git pull && cd ..
-    fi
-    sudo ln -sf "$(pwd)/Hyprshot/hyprshot" /usr/local/bin
-    chmod +x Hyprshot/hyprshot
-    cd ..
-    
-    # Installation des polices et icônes
-    sudo cp -f share/FiraCodeNerdFont-Medium.ttf /usr/share/fonts/ || printr "Erreur lors de la copie de la police"
-    sudo cp -rf share/Bibata-Modern-Classic /usr/share/icons/ || printr "Erreur lors de la copie des icônes"
-    sudo mkdir -p /usr/share/icons/default/ || printr "Erreur lors de la création du dossier d'icônes par défaut"
-    sudo cp -rf share/Bibata-Modern-Classic/* /usr/share/icons/default/ || printr "Erreur lors de la copie des icônes par défaut"
-    
-    # Installation de OhMyPosh
-    printb "Installation de OhMyPosh..."
-    curl -s https://ohmyposh.dev/install.sh | bash -s || printr "Erreur lors de l'installation de OhMyPosh"
-    
-    # Installation de pywalfox
-    printb "Installation de pywalfox..."
-    pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1 || printr "Erreur lors de l'installation de pywalfox"
-    pywalfox install --browser firefox || printr "Erreur lors de l'installation de pywalfox pour firefox"
-    
-    # Installation de ricemood
-    printb "Installation de ricemood..."
-    npm install -g ricemood || printr "Erreur lors de l'installation de ricemood"
-    
-    # Installation de textfox
-    install_config
-    printg "Installation terminée avec succès!"
+    printr "no!"
+    exit 1 
 }
 
 # Gestion des autres distributions
