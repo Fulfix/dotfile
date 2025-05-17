@@ -227,6 +227,10 @@ arch() {
     printr "no!"
     exit 1 
 }
+alpine() {
+    printr "no!"
+    exit 1 
+}
 
 # Gestion des autres distributions
 other() {
