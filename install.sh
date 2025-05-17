@@ -158,10 +158,15 @@ fedora() {
         fi
         
         # Construction des projets cargo
-        build_cargo_project "https://github.com/LGFae/swww" "swww" "swww" "" || printr "Erreur lors de la compilation de swww"
+        if ! swww -V; then
+            build_cargo_project "https://github.com/LGFae/swww" "swww" "swww" "" || printr "Erreur lors de la compilation de swww"
+
+        fi
+        if ! eww -V; then
+            build_cargo_project "https://github.com/elkowar/eww" "eww" "eww" "--no-default-features --features=wayland" || printr "Erreur lors de la compilation de eww"
+        fi
         build_cargo_project "https://github.com/Fulfix/inori" "inori" "inori" || printr "Erreur lors de la compilation de inori"
-        build_cargo_project "https://github.com/elkowar/eww" "eww" "eww" "--no-default-features --features=wayland" || printr "Erreur lors de la compilation de eww"
-        
+
         # Installation de hyprshot
         cd cloned || exit 1
         if [ ! -d "Hyprshot" ]; then
