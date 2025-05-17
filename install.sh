@@ -47,8 +47,8 @@ install_config() {
     if [ -f "$HOME"/.config/hypr/hyprland.conf ]; then
         password=""
         read -p "type your password: " $password
-        sed -i 's/your_password/$password/g' ~/.config/hypr/hyprland.conf
-        sed -i 's/your_password/$password/g' ~/.config/waybar/config.jsonc
+        sed -i 's/your_password/"$password"/g' ~/.config/hypr/hyprland.conf
+        sed -i 's/your_password/"$password"/g' ~/.config/waybar/config.jsonc
     fi
 
     if [ ! -d /usr/share/sddm/themes ]; then
