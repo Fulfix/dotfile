@@ -174,6 +174,7 @@ fedora() {
         pip install pywalfox
         pywalfox install
         firefox about:profiles & >/dev/null 2>&1
+        cd "$root_dir"/cloned
         git clone https://github.com/Fulfix/textfox
         cd textfox
         bash tf-install.sh
@@ -194,6 +195,7 @@ fedora() {
         #install pywalfox for librewolf
         pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1
         pywalfox install --browser librewolf
+        cd "$root_dir"/cloned
         git clone https://github.com/Fulfix/textfox
         cd textfox
         bash tf-install.sh
