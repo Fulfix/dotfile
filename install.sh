@@ -54,6 +54,9 @@ install_config() {
     if [ ! -d /usr/share/sddm/themes ]; then
         sudo mkdir -p /usr/share/sddm/themes
     fi
+    cd share
+    git clone https://github.com/Fulfix/simple-sddm-2
+    cd $root_dir
     sudo cp -rf share/simple-sddm-2 /usr/share/sddm/themes
     sudo chown -R /usr/share/sddm/themes/simple-sddm-2
     sudo cp ~/.config/wallpaper/* /usr/share/sddm/simple-sddm-2/Backgrounds/*
