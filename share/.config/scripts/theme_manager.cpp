@@ -95,7 +95,7 @@ ColorScheme extractColors(const string& imagePath) {
     
     // Préparer la commande avec une taille sécurisée
     string home = string(getenv("HOME"));
-    string command =  home + "/.nvm/versions/node/v23.11.0/bin/ricemood -i " + imagePath + " -f " + home + "/.config/ricemood 2>/dev/null";
+    string command = "ricemood -i " + imagePath + " -f " + home + "/.config/ricemood 2>/dev/null";
     
     // Exécuter la commande et capturer la sortie
     FILE *fp = popen(command.c_str(), "r");
