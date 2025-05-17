@@ -181,12 +181,15 @@ fedora() {
 
         pip install pywalfox
         pywalfox install
-        firefox about:profiles & >/dev/null 2>&1
-        cd "$root_dir"/cloned
-        git clone https://github.com/Fulfix/textfox
-        cd textfox
-        bash tf-install.sh
-        cd $root_dir
+        if firefox about:profiles & >/dev/null 2>&1; then
+            cd "$root_dir"/cloned
+            git clone https://github.com/Fulfix/textfox
+            cd textfox
+            bash tf-install.sh
+            cd $root_dir
+        else
+            printb "after the installation have finished install textfox using tf-install.sh"
+        fi
         
     elif [[ "$(uname -m)" == "x86_64" ]]; then
         sudo dnf install -y $common_packages SwayNotificationCenter hyprshot librewolf
@@ -203,11 +206,16 @@ fedora() {
         #install pywalfox for librewolf
         pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1
         pywalfox install --browser librewolf
-        cd "$root_dir"/cloned
-        git clone https://github.com/Fulfix/textfox
-        cd textfox
-        bash tf-install.sh
-        cd $root_dir
+        if librewolf about:profiles & >/dev/null 2>&1; then
+            cd "$root_dir"/cloned
+            git clone https://github.com/Fulfix/textfox
+            cd textfox
+            bash tf-install.sh
+            cd $root_dir
+        else
+            printb "after the installation have finished install textfox using tf-install.sh"
+        fi
+
     fi
     
     # Actions communes aux deux architectures
