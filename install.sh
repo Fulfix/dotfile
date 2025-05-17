@@ -147,7 +147,7 @@ fedora() {
     common_packages="fastfetch kitty hyprland mpd mpc neovim rofi-wayland waybar wlogout sddm cargo npm git python3-pip flatpak lz4-devel glib2-devel gtk3-devel libdbusmenu-gtk3-devel gtk-layer-shell-devel  gcc-c++ kwin lsd"
     
     if [[ "$(uname -m)" == "aarch64" ]]; then
-	    sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+	    sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
         sudo dnf install -y $common_packages SwayNotificationCenter firefox
         if [ $? -ne 0 ]; then
             printr "Erreur lors de l'installation des paquets"
