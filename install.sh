@@ -28,6 +28,9 @@ fi
 
 # Installation des configurations
 install_config() {
+    if [ ! -d "$HOME/.cache/wal" ]; then
+        mkdir -p ~/.cache/wal
+    fi
     if [ ! -d "$HOME/.config" ]; then
         mkdir "$HOME/.config"
     fi
