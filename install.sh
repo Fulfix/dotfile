@@ -227,7 +227,7 @@ fedora() {
     
     
     install_config
-    g++ ~/.config/scripts/theme_manager.cpp -o ~/.config/scritps/wp
+    g++ ~/.config/scripts/theme_manager.cpp -o ~/.config/scripts/wp
     printg "Installation terminée avec succès!"
 }
 
