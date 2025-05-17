@@ -53,6 +53,7 @@ install_config() {
     fi
     sudo cp -f share/simple-sddm-2.conf /etc/sddm.conf.d
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    nvim +PlugInstall +qall
     cd ~/.local/share/nvim/plugged/markdown-preview.nvim
     npm install 
     cd $root_dir 
