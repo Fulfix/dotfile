@@ -170,9 +170,10 @@ fedora() {
         chmod +x Hyprshot/hyprshot
         cd $root_dir
         # install pywalfox
+
         pip install pywalfox
         pywalfox install
-        firefox about:profiles & 
+        firefox about:profiles & >/dev/null 2>&1
         git clone https://github.com/Fulfix/textfox
         cd textfox
         bash tf-install.sh
@@ -228,7 +229,7 @@ fedora() {
     
     install_config
     g++ ~/.config/scripts/theme_manager.cpp -o ~/.config/scritps/wp
-    firefox about:profiles
+    firefox about:profiles & >/dev/null 2>&1
     git clone https://github.com/Fulfix/textfox
     cd textfox 
     bash tf-install
