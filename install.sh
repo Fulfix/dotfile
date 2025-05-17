@@ -27,17 +27,21 @@ if [ ! -d "cloned" ]; then
 fi
 
 # Installation de textfox
-install_text() {
-	if [ ! -d "$HOME/.cache/wal/" ]; then
-		mkdir -p $HOME/.cache/wal
-	fi
-    git clone https://github.com/Fulfix/textfox
-    cd textfox
-    chmod +x tf-install.sh
-    if ! ./tf-install.sh; then
-        printr "error occured with textfox installation"
-        exit 1
-    fi
+install_fox () {
+    sudo -y dnf install python3 python3-pip libnotify
+    git clone https://github.com/Floorp-Projects/Floorp.git
+    git submodule update --init --recursive
+    cd Floorp
+    ./mach bootstrap
+    echo 'ac_add_options --with-branding=browser/branding/official' >> mozconfig
+    echo 'ac_add_options --with-app-basename=Floorp' >> mozconfig
+    echo 'ac_add_options --with-app-name=floorp' >> mozconfig
+    echo "ac_add_options --enable-bootstrap" >> mozconfig
+
+    // build Floorp
+    ./mach configure
+    ./mach build
+    ./mach run
 }
 
 # Installation des configurations
@@ -70,7 +74,10 @@ install_config() {
     sudo 
     systemctl --user enable mpd
     systemctl --user start mpd
-    printb "disable your actual display manager and enable sddm"
+    printb "disable your actual display manager to continue"
+    read
+    sudo systemctl enable sddm
+    printb "reboot your computeur" 
 }
 
 # Vérification de la connexion internet
@@ -159,7 +166,7 @@ fedora() {
     
     if [[ "$(uname -m)" == "aarch64" ]]; then
 	    sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-        sudo dnf install -y $common_packages SwayNotificationCenter 
+        sudo dnf install -y $common_packages SwayNotificationCenter firefox
         if [ $? -ne 0 ]; then
             printr "Erreur lors de l'installation des paquets"
             exit 1
@@ -220,16 +227,13 @@ fedora() {
     printb "Installation de ricemood..."
     sudo npm install -g ricemood || printr "Erreur lors de l'installation de ricemood"
     
-    # Configuration de Flatpak pour aarch64
-    if [[ "$(uname -m)" == "aarch64" ]]; then
-        printb "Configuration de Flatpak..."
-        flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        flatpak install -y flathub io.gitlab.librewolf-community || printr "Erreur lors de l'installation de Librewolf via Flatpak"
-    fi
     
     install_config
-    install_text
     g++ ~/.config/scripts/theme_manager.cpp -o ~/.config/scritps/wp
+    firefox about:profiles
+    git clone https://github.com/Fulfix/textfox
+    cd textfox 
+    bash tf-install
     printg "Installation terminée avec succès!"
 }
 
@@ -281,7 +285,6 @@ arch() {
     printb "Installation de ricemood..."
     npm install -g ricemood || printr "Erreur lors de l'installation de ricemood"
     
-    install_text
     install_config
     printg "Installation terminée avec succès!"
 }
@@ -335,7 +338,6 @@ alpine() {
     npm install -g ricemood || printr "Erreur lors de l'installation de ricemood"
     
     # Installation de textfox
-    install_text
     install_config
     printg "Installation terminée avec succès!"
 }
