@@ -48,6 +48,7 @@ install_config() {
         sudo mkdir -p /usr/share/sddm/themes
     fi
     sudo cp -rf share/simple-sddm-2 /usr/share/sddm/themes
+    sudo chown -R /usr/share/sddm/themes/simple-sddm-2
     if [ ! -d /etc/sddm.conf.d ]; then
         sudo mkdir -p /etc/sddm.conf.d
     fi
