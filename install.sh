@@ -210,17 +210,6 @@ fedora() {
     printb "Installation de OhMyPosh..."
     curl -s https://ohmyposh.dev/install.sh | bash -s || printr "Erreur lors de l'installation de OhMyPosh"
     
-    # Installation de pywalfox
-    printb "Installation de pywalfox..."
-    pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1 || printr "Erreur lors de l'installation de pywalfox"
-
-    
-    # Utilisation du bon navigateur selon l'architecture
-    if [[ "$(uname -m)" == "aarch64" ]]; then
-        pywalfox install --browser firefox || printr "Erreur lors de l'installation de pywalfox pour firefox"
-    else
-        pywalfox install --browser librewolf || printr "Erreur lors de l'installation de pywalfox pour librewolf"
-    fi
     
     # Installation de ricemood
     printb "Installation de ricemood..."
@@ -229,10 +218,6 @@ fedora() {
     
     install_config
     g++ ~/.config/scripts/theme_manager.cpp -o ~/.config/scritps/wp
-    firefox about:profiles & >/dev/null 2>&1
-    git clone https://github.com/Fulfix/textfox
-    cd textfox 
-    bash tf-install
     printg "Installation terminée avec succès!"
 }
 
