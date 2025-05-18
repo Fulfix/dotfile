@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Fonctions d'affichage avec couleurs
+# Display functions with colors
 printr() {
     printf "\033[31m%s\033[0m\n" "$1"
 }
@@ -14,145 +14,146 @@ printg() {
 }
 
 
-# Vérification du dossier de dotfiles
+# Checking the dotfiles directory
 if [ ! -d "share/.config" ]; then
-    printr "Vous devez exécuter ce script dans le répertoire des dotfiles"
+    printr "You must run this script in the dotfiles directory"
     exit 1
 else
     root_dir=$(pwd)
 fi
-# Création du dossier cloned s'il n'existe pas
+# Creating the cloned directory if it doesn't exist
 if [ ! -d "cloned" ]; then
     mkdir -p cloned
 fi
 
-# Installation des configurations
+# Installing configurations
 
 install_config() {
-    # Création du dossier cache/wal s'il n'existe pas
+    # Creating the cache/wal directory if it doesn't exist
     if [ ! -d "$HOME/.cache/wal" ]; then
         mkdir -p ~/.cache/wal
     fi
 
-    # Création du dossier config s'il n'existe pas
+    # Creating the config directory if it doesn't exist
     if [ ! -d "$HOME/.config" ]; then
         mkdir "$HOME/.config"
     fi
 
-    # Sauvegarde des configurations existantes
+    # Backing up existing configurations
     if ! cp -rf "$HOME/.config" "$HOME/backup"; then
-        printr "Une erreur est survenue lors de la sauvegarde de .config"
+        printr "An error occurred while backing up .config"
         exit 1
     fi
 
     if ! cp -f "$HOME/.bashrc" "$HOME/backup"; then
-        printr "Une erreur est survenue lors de la sauvegarde de .bashrc"
+        printr "An error occurred while backing up .bashrc"
         exit 1
     fi
 
-    # Copie des nouvelles configurations
+    # Copying new configurations
     cp -f share/.bashrc "$HOME/"
     cp -rf share/.config "$HOME/"
 
-    # Demande et insertion du mot de passe
+    # Asking for and inserting the password
     password=""
-    read -p "Entrez votre mot de passe: " password
+    read -p "Enter your password: " password
     sed -i "s/your_password/$password/g" ~/.config/hypr/hyprland.conf
     sed -i "s/your_password/$password/g" ~/.config/waybar/config.jsonc
 
-    # Installation du thème SDDM
+    # Installing the SDDM theme
     if [ ! -d /usr/share/sddm/themes ]; then
         sudo mkdir -p /usr/share/sddm/themes
     fi
 
-    # Clonage du thème simple-sddm-2
+    # Cloning the simple-sddm-2 theme
     cd share
     git clone https://github.com/Fulfix/simple-sddm-2
     cd $root_dir
 
-    # Copie du thème et configuration des permissions
+    # Copying the theme and configuring permissions
     sudo cp -rf share/simple-sddm-2 /usr/share/sddm/themes
     sudo chown -R root:root /usr/share/sddm/themes/simple-sddm-2
 
-    # Création du dossier Backgrounds s'il n'existe pas
+    # Creating the Backgrounds directory if it doesn't exist
     sudo mkdir -p /usr/share/sddm/themes/simple-sddm-2/Backgrounds
 
-    # Vérification et copie des fonds d'écran
+    # Checking and copying wallpapers
     if [ -d "$HOME/.config/wallpaper" ] && [ "$(ls -A $HOME/.config/wallpaper 2>/dev/null)" ]; then
         sudo cp -rf $HOME/.config/wallpaper/* /usr/share/sddm/themes/simple-sddm-2/Backgrounds/
     else
-        printb "Attention: Le dossier de fonds d'écran est vide ou n'existe pas."
+        printb "Warning: The wallpaper directory is empty or doesn't exist."
         mkdir -p $HOME/.config/wallpaper
     fi
 
-    # Configuration de SDDM
+    # Configuring SDDM
     if [ ! -d /etc/sddm.conf.d ]; then
         sudo mkdir -p /etc/sddm.conf.d
     fi
     sudo cp -f share/simple-sddm-2.conf /etc/sddm.conf.d
 
-    # Installation de vim-plug pour Neovim
+    # Installing vim-plug for Neovim
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     nvim +PlugInstall +qall
 
-    # Installation de markdown-preview pour Neovim
+    # Installing markdown-preview for Neovim
     cd ~/.local/share/nvim/plugged/markdown-preview.nvim
     npm install
     cd $root_dir
 
-    # Activation du service MPD
+    # Activating the MPD service
     systemctl --user enable mpd
     systemctl --user start mpd
 
-    # Activation de SDDM
-    printb "Désactivez votre gestionnaire d'affichage actuel pour continuer"
+    # Activating SDDM
+    printb "Disable your current display manager to continue"
     read
     sudo systemctl enable sddm
 
-    printb "Redémarrez votre ordinateur pour finaliser l'installation"
+    printb "Restart your computer to finalize the installation"
 }
-# Vérification de la connexion internet
+
+# Checking internet connection
 check_internet() {
-    printb "Vérification de la connexion internet..."
-    # Teste plusieurs sites pour plus de fiabilité
+    printb "Checking internet connection..."
+    # Testing multiple sites for reliability
     if ! curl -s --connect-timeout 5 https://www.google.com >/dev/null && \
        ! curl -s --connect-timeout 5 https://www.cloudflare.com >/dev/null && \
        ! ping -c 2 -W 2 1.1.1.1 >/dev/null 2>&1; then
-        printr "Erreur: Veuillez vérifier votre connexion internet"
+        printr "Error: Please check your internet connection"
         exit 1
     else
-        printg "Connexion internet fonctionnelle"
+        printg "Internet connection is working"
     fi
 }
 
-# Vérification des mises à jour selon la distribution
+# Checking for updates based on distribution
 check_update() {
-    printb "Vérification des mises à jour du système..."
+    printb "Checking for system updates..."
     case "$1" in
         "fedora")
             sudo dnf check-update >/dev/null 2>&1
-            # dnf check-update renvoie 0 s'il n'y a pas de mise à jour et 100 s'il y en a
-            if [ $? -eq 1 ]; then  # Donc on vérifie 1 qui est une vraie erreur
-                printb "Problème lors de la vérification des mises à jour."
-                read -p "Appuyez sur Entrée pour continuer quand même..."
+            # dnf check-update returns 0 if there are no updates and 100 if there are
+            if [ $? -eq 1 ]; then  # So we check for 1 which is a real error
+                printb "Problem while checking for updates."
+                read -p "Press Enter to continue anyway..."
             fi
             ;;
         "arch")
             if ! sudo pacman -Sy >/dev/null 2>&1; then
-                printb "Problème lors de la mise à jour des dépôts."
-                read -p "Appuyez sur Entrée pour continuer quand même..."
+                printb "Problem while updating repositories."
+                read -p "Press Enter to continue anyway..."
             fi
             ;;
         "alpine")
             if ! sudo apk update >/dev/null 2>&1; then
-                printb "Problème lors de la mise à jour des dépôts."
-                read -p "Appuyez sur Entrée pour continuer quand même..."
+                printb "Problem while updating repositories."
+                read -p "Press Enter to continue anyway..."
             fi
             ;;
     esac
 }
 
-# Fonction pour la compilation de dépôts git avec Cargo
+# Function for compiling git repositories with Cargo
 build_cargo_project() {
     local repo_url="$1"
     local repo_dir="$2"
@@ -162,23 +163,23 @@ build_cargo_project() {
     cd cloned || return 1
     
     if [ ! -d "$repo_dir" ]; then
-        printb "Clonage de $repo_url..."
+        printb "Cloning $repo_url..."
         git clone "$repo_url" "$repo_dir" || return 1
     else
-        printb "Le dépôt $repo_dir existe déjà, vérification des mises à jour..."
+        printb "The repository $repo_dir already exists, checking for updates..."
         cd "$repo_dir" || return 1
         sudo git pull || return 1
         cd ..
     fi
     
     cd "$repo_dir" || return 1
-    printb "Compilation de $bin_name..."
+    printb "Compiling $bin_name..."
     cargo build --release $cargo_args || return 1
     chmod +x "target/release/$bin_name" || return 1
     sudo cp -f "target/release/$bin_name" /usr/local/bin/ || return 1
     
     if [ "$bin_name" = "swww" ]; then
-        # Copie également swww-daemon pour swww
+        # Also copying swww-daemon for swww
         sudo cp -f "target/release/swww-daemon" /usr/local/bin/ || return 1
     fi
     
@@ -186,34 +187,34 @@ build_cargo_project() {
     return 0
 }
 
-# Installation pour Fedora
+# Installation for Fedora
 fedora() {
     check_internet
     check_update "fedora"
-    printb "Installation des paquets pour Fedora..."
+    printb "Installing packages for Fedora..."
     
-    # Paquets communs pour toutes les architectures
+    # Common packages for all architectures
     common_packages="fastfetch kitty hyprland mpd mpc neovim rofi-wayland waybar wlogout sddm cargo npm git python3-pip flatpak lz4-devel glib2-devel gtk3-devel libdbusmenu-gtk3-devel gtk-layer-shell-devel  gcc-c++ kwin lsd"
     
     if [[ "$(uname -m)" == "aarch64" ]]; then
 	    sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
         sudo dnf install -y $common_packages SwayNotificationCenter firefox
         if [ $? -ne 0 ]; then
-            printr "Erreur lors de l'installation des paquets"
+            printr "Error while installing packages"
             exit 1
         fi
         
-        # Construction des projets cargo
+        # Building cargo projects
         if ! swww -V; then
-            build_cargo_project "https://github.com/LGFae/swww" "swww" "swww" "" || printr "Erreur lors de la compilation de swww"
+            build_cargo_project "https://github.com/LGFae/swww" "swww" "swww" "" || printr "Error while compiling swww"
 
         fi
         if ! eww -V; then
-            build_cargo_project "https://github.com/elkowar/eww" "eww" "eww" "--no-default-features --features=wayland" || printr "Erreur lors de la compilation de eww"
+            build_cargo_project "https://github.com/elkowar/eww" "eww" "eww" "--no-default-features --features=wayland" || printr "Error while compiling eww"
         fi
-        build_cargo_project "https://github.com/Fulfix/inori" "inori" "inori" || printr "Erreur lors de la compilation de inori"
+        build_cargo_project "https://github.com/Fulfix/inori" "inori" "inori" || printr "Error while compiling inori"
 
-        # Installation de hyprshot
+        # Installing hyprshot
         cd cloned || exit 1
         if [ ! -d "Hyprshot" ]; then
             git clone https://github.com/Gustash/hyprshot.git Hyprshot
@@ -234,20 +235,20 @@ fedora() {
             bash tf-install.sh
             cd $root_dir
         else
-            printb "after the installation have finished install textfox using tf-install.sh"
+            printb "After the installation has finished, install textfox using tf-install.sh"
         fi
         
     elif [[ "$(uname -m)" == "x86_64" ]]; then
         sudo dnf install -y $common_packages SwayNotificationCenter hyprshot librewolf
         if [ $? -ne 0 ]; then
-            printr "Erreur lors de l'installation des paquets"
+            printr "Error while installing packages"
             exit 1
         fi
         
-        # Construction des projets cargo
-        build_cargo_project "https://github.com/LGFae/swww" "swww" "swww" "" || printr "Erreur lors de la compilation de swww"
-        build_cargo_project "https://github.com/Fulfix/inori" "inori" "inori" "-r" || printr "Erreur lors de la compilation de inori"
-        build_cargo_project "https://github.com/elkowar/eww" "eww" "eww" "--no-default-features --features=wayland" || printr "Erreur lors de la compilation de eww"
+        # Building cargo projects
+        build_cargo_project "https://github.com/LGFae/swww" "swww" "swww" "" || printr "Error while compiling swww"
+        build_cargo_project "https://github.com/Fulfix/inori" "inori" "inori" "-r" || printr "Error while compiling inori"
+        build_cargo_project "https://github.com/elkowar/eww" "eww" "eww" "--no-default-features --features=wayland" || printr "Error while compiling eww"
 
         #install pywalfox for librewolf
         pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1
@@ -259,33 +260,33 @@ fedora() {
             bash tf-install.sh
             cd $root_dir
         else
-            printb "after the installation have finished install textfox using tf-install.sh"
+            printb "After the installation has finished, install textfox using tf-install.sh"
         fi
 
     fi
     
-    # Actions communes aux deux architectures
-    sudo cp -f share/FiraCodeNerdFont-Medium.ttf /usr/share/fonts/ || printr "Erreur lors de la copie de la police"
-    sudo cp -rf share/Bibata-Modern-Classic /usr/share/icons/ || printr "Erreur lors de la copie des icônes"
-    sudo mkdir -p /usr/share/icons/default/ || printr "Erreur lors de la création du dossier d'icônes par défaut"
-    sudo cp -rf share/Bibata-Modern-Classic/* /usr/share/icons/default/ || printr "Erreur lors de la copie des icônes par défaut"
+    # Actions common to both architectures
+    sudo cp -f share/FiraCodeNerdFont-Medium.ttf /usr/share/fonts/ || printr "Error while copying the font"
+    sudo cp -rf share/Bibata-Modern-Classic /usr/share/icons/ || printr "Error while copying the icons"
+    sudo mkdir -p /usr/share/icons/default/ || printr "Error while creating the default icons directory"
+    sudo cp -rf share/Bibata-Modern-Classic/* /usr/share/icons/default/ || printr "Error while copying the default icons"
     
-    # Installation de OhMyPosh
-    printb "Installation de OhMyPosh..."
-    curl -s https://ohmyposh.dev/install.sh | bash -s || printr "Erreur lors de l'installation de OhMyPosh"
+    # Installing OhMyPosh
+    printb "Installing OhMyPosh..."
+    curl -s https://ohmyposh.dev/install.sh | bash -s || printr "Error while installing OhMyPosh"
     
     
-    # Installation de ricemood
-    printb "Installation de ricemood..."
-    sudo npm install -g ricemood || printr "Erreur lors de l'installation de ricemood"
+    # Installing ricemood
+    printb "Installing ricemood..."
+    sudo npm install -g ricemood || printr "Error while installing ricemood"
     
     
     install_config
     g++ ~/.config/scripts/theme_manager.cpp -o ~/.config/scripts/wp
-    printg "Installation terminée avec succès!"
+    printg "Installation completed successfully!"
 }
 
-# Installation pour Arch
+# Installation for Arch
 arch() {
     printr "no!"
     exit 1 
@@ -295,47 +296,47 @@ alpine() {
     exit 1 
 }
 
-# Gestion des autres distributions
+# Handling other distributions
 other() {
     check_internet
-    printr "Cette distribution n'est pas prise en charge directement par ce script."
-    printb "Voici les paquets à installer manuellement :"
+    printr "This distribution is not directly supported by this script."
+    printb "Here are the packages to install manually:"
     cat << EOF
-- fastfetch (affichage d'informations système)
+- fastfetch (system information display)
 - kitty (terminal)
-- hyprland (gestionnaire de fenêtres)
-- mpd/mpc (lecture de musique)
-- neovim (éditeur de texte)
-- rofi ou rofi-wayland (lanceur d'applications)
-- swaync ou SwayNotificationCenter (notifications)
-- waybar (barre d'état)
-- wlogout (menu de déconnexion)
-- sddm (gestionnaire de connexion)
-- cargo (pour compiler swww, inori, eww)
-- git (pour cloner les dépôts)
-- npm (pour installer ricemood)
-- pip (pour installer pywalfox)
+- hyprland (window manager)
+- mpd/mpc (music playback)
+- neovim (text editor)
+- rofi or rofi-wayland (application launcher)
+- swaync or SwayNotificationCenter (notifications)
+- waybar (status bar)
+- wlogout (logout menu)
+- sddm (display manager)
+- cargo (to compile swww, inori, eww)
+- git (to clone repositories)
+- npm (to install ricemood)
+- pip (to install pywalfox)
 
-Vous devrez également compiler manuellement :
+You will also need to manually compile:
 - swww (https://github.com/LGFae/swww)
 - inori (https://github.com/Fulfix/inori)
 - eww (https://github.com/elkowar/eww)
 - hyprshot (https://github.com/Gustash/hyprshot.git)
 
-Et installer :
+And install:
 - OhMyPosh (curl -s https://ohmyposh.dev/install.sh | bash -s)
 - pywalfox (pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1)
 - ricemood (npm install -g ricemood)
 EOF
 }
 
-# Menu principal
-echo "===== Script d'installation d'environnement Hyprland ====="
+# Main menu
+echo "===== Hyprland Environment Installation Script ====="
 echo ""
 
-# Afficher le menu et récupérer le choix
-PS3="Quelle distribution utilisez-vous? "
-select DISTRO in "fedora" "arch" "alpine" "other" "quitter"; do
+# Display the menu and get the choice
+PS3="Which distribution are you using? "
+select DISTRO in "fedora" "arch" "alpine" "other" "quit"; do
     case $DISTRO in
         "fedora")
             fedora
@@ -353,12 +354,12 @@ select DISTRO in "fedora" "arch" "alpine" "other" "quitter"; do
             other
             break
             ;;
-        "quitter")
-            printb "Installation annulée."
+        "quit")
+            printb "Installation cancelled."
             exit 0
             ;;
         *)
-            printr "Option invalide, veuillez réessayer."
+            printr "Invalid option, please try again."
             ;;
     esac
 done
