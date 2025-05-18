@@ -103,7 +103,7 @@ install_config() {
     # Activating the MPD service
     systemctl --user enable mpd
     systemctl --user start mpd
-    swww img $HOME/.config/wallpaper/clannad.jpg
+    printf "Lanczos3\n$HOME/.config/wallpaper/clannad.jpg" > $HOME/.cache/swww/Virtual-1
 
     # Activating SDDM
     printb "Disable your current display manager to continue"
