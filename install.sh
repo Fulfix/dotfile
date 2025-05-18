@@ -57,7 +57,7 @@ install_config() {
     cd $root_dir
     sudo cp -rf share/simple-sddm-2 /usr/share/sddm/themes
     sudo chown -R /usr/share/sddm/themes/simple-sddm-2
-    sudo cp ~/.config/wallpaper/* /usr/share/sddm/simple-sddm-2/Backgrounds/*
+    sudo cp ~/.config/wallpaper/* /usr/share/sddm/themes/simple-sddm-2/Backgrounds/*
     if [ ! -d /etc/sddm.conf.d ]; then
         sudo mkdir -p /etc/sddm.conf.d
     fi
