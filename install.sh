@@ -103,6 +103,9 @@ install_config() {
     # Activating the MPD service
     systemctl --user enable mpd
     systemctl --user start mpd
+    if [ ! -d "$HOME/.cache/swww/" ]; then
+	    mkdir -p $HOME/.cache/swww
+    fi
     printf "Lanczos3\n$HOME/.config/wallpaper/clannad.jpg" > $HOME/.cache/swww/Virtual-1
 
     # Activating SDDM
