@@ -27,54 +27,90 @@ if [ ! -d "cloned" ]; then
 fi
 
 # Installation des configurations
+
 install_config() {
+    # Création du dossier cache/wal s'il n'existe pas
     if [ ! -d "$HOME/.cache/wal" ]; then
         mkdir -p ~/.cache/wal
     fi
+
+    # Création du dossier config s'il n'existe pas
     if [ ! -d "$HOME/.config" ]; then
         mkdir "$HOME/.config"
     fi
+
+    # Sauvegarde des configurations existantes
     if ! cp -rf "$HOME/.config" "$HOME/backup"; then
-        printr "an error occured with the backup of .config"
+        printr "Une erreur est survenue lors de la sauvegarde de .config"
         exit 1
     fi
+
     if ! cp -f "$HOME/.bashrc" "$HOME/backup"; then
-        printr "an error occured with the backup of .bashrc"
+        printr "Une erreur est survenue lors de la sauvegarde de .bashrc"
         exit 1
     fi
+
+    # Copie des nouvelles configurations
     cp -f share/.bashrc "$HOME/"
     cp -rf share/.config "$HOME/"
-	password=""
-	read -p "type your password: " password
-	sed -i "s/your_password/$password/g" ~/.config/hypr/hyprland.conf
-	sed -i "s/your_password/$password/g" ~/.config/waybar/config.jsonc
 
+    # Demande et insertion du mot de passe
+    password=""
+    read -p "Entrez votre mot de passe: " password
+    sed -i "s/your_password/$password/g" ~/.config/hypr/hyprland.conf
+    sed -i "s/your_password/$password/g" ~/.config/waybar/config.jsonc
+
+    # Installation du thème SDDM
     if [ ! -d /usr/share/sddm/themes ]; then
         sudo mkdir -p /usr/share/sddm/themes
     fi
+
+    # Clonage du thème simple-sddm-2
     cd share
     git clone https://github.com/Fulfix/simple-sddm-2
     cd $root_dir
+
+    # Copie du thème et configuration des permissions
     sudo cp -rf share/simple-sddm-2 /usr/share/sddm/themes
-    sudo chown -R /usr/share/sddm/themes/simple-sddm-2
-    sudo cp ~/.config/wallpaper/* /usr/share/sddm/themes/simple-sddm-2/Backgrounds/*
+    sudo chown -R root:root /usr/share/sddm/themes/simple-sddm-2
+
+    # Création du dossier Backgrounds s'il n'existe pas
+    sudo mkdir -p /usr/share/sddm/themes/simple-sddm-2/Backgrounds
+
+    # Vérification et copie des fonds d'écran
+    if [ -d "$HOME/.config/wallpaper" ] && [ "$(ls -A $HOME/.config/wallpaper 2>/dev/null)" ]; then
+        sudo cp -rf $HOME/.config/wallpaper/* /usr/share/sddm/themes/simple-sddm-2/Backgrounds/
+    else
+        printb "Attention: Le dossier de fonds d'écran est vide ou n'existe pas."
+        mkdir -p $HOME/.config/wallpaper
+    fi
+
+    # Configuration de SDDM
     if [ ! -d /etc/sddm.conf.d ]; then
         sudo mkdir -p /etc/sddm.conf.d
     fi
     sudo cp -f share/simple-sddm-2.conf /etc/sddm.conf.d
+
+    # Installation de vim-plug pour Neovim
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     nvim +PlugInstall +qall
+
+    # Installation de markdown-preview pour Neovim
     cd ~/.local/share/nvim/plugged/markdown-preview.nvim
-    npm install 
-    cd $root_dir 
+    npm install
+    cd $root_dir
+
+    # Activation du service MPD
     systemctl --user enable mpd
     systemctl --user start mpd
-    printb "disable your actual display manager to continue"
+
+    # Activation de SDDM
+    printb "Désactivez votre gestionnaire d'affichage actuel pour continuer"
     read
     sudo systemctl enable sddm
-    printb "reboot your computeur" 
-}
 
+    printb "Redémarrez votre ordinateur pour finaliser l'installation"
+}
 # Vérification de la connexion internet
 check_internet() {
     printb "Vérification de la connexion internet..."
