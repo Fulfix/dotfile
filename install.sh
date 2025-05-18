@@ -103,6 +103,7 @@ install_config() {
     # Activating the MPD service
     systemctl --user enable mpd
     systemctl --user start mpd
+    swww img $HOME/.config/wallpaper/clannad.jpg
 
     # Activating SDDM
     printb "Disable your current display manager to continue"
@@ -159,9 +160,9 @@ build_cargo_project() {
     local repo_dir="$2"
     local bin_name="$3"
     local cargo_args="$4"
-    
+
     cd cloned || return 1
-    
+
     if [ ! -d "$repo_dir" ]; then
         printb "Cloning $repo_url..."
         git clone "$repo_url" "$repo_dir" || return 1
@@ -171,18 +172,18 @@ build_cargo_project() {
         sudo git pull || return 1
         cd ..
     fi
-    
+
     cd "$repo_dir" || return 1
     printb "Compiling $bin_name..."
     cargo build --release $cargo_args || return 1
     chmod +x "target/release/$bin_name" || return 1
     sudo cp -f "target/release/$bin_name" /usr/local/bin/ || return 1
-    
+
     if [ "$bin_name" = "swww" ]; then
         # Also copying swww-daemon for swww
         sudo cp -f "target/release/swww-daemon" /usr/local/bin/ || return 1
     fi
-    
+
     cd ../.. || return 1
     return 0
 }
@@ -192,10 +193,10 @@ fedora() {
     check_internet
     check_update "fedora"
     printb "Installing packages for Fedora..."
-    
+
     # Common packages for all architectures
     common_packages="fastfetch kitty hyprland mpd mpc neovim rofi-wayland waybar wlogout sddm cargo npm git python3-pip flatpak lz4-devel glib2-devel gtk3-devel libdbusmenu-gtk3-devel gtk-layer-shell-devel  gcc-c++ kwin lsd"
-    
+
     if [[ "$(uname -m)" == "aarch64" ]]; then
 	    sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
         sudo dnf install -y $common_packages SwayNotificationCenter firefox
@@ -203,7 +204,7 @@ fedora() {
             printr "Error while installing packages"
             exit 1
         fi
-        
+
         # Building cargo projects
         if ! swww -V; then
             build_cargo_project "https://github.com/LGFae/swww" "swww" "swww" "" || printr "Error while compiling swww"
@@ -237,14 +238,14 @@ fedora() {
         else
             printb "After the installation has finished, install textfox using tf-install.sh"
         fi
-        
+
     elif [[ "$(uname -m)" == "x86_64" ]]; then
         sudo dnf install -y $common_packages SwayNotificationCenter hyprshot librewolf
         if [ $? -ne 0 ]; then
             printr "Error while installing packages"
             exit 1
         fi
-        
+
         # Building cargo projects
         build_cargo_project "https://github.com/LGFae/swww" "swww" "swww" "" || printr "Error while compiling swww"
         build_cargo_project "https://github.com/Fulfix/inori" "inori" "inori" "-r" || printr "Error while compiling inori"
@@ -264,23 +265,23 @@ fedora() {
         fi
 
     fi
-    
+
     # Actions common to both architectures
     sudo cp -f share/FiraCodeNerdFont-Medium.ttf /usr/share/fonts/ || printr "Error while copying the font"
     sudo cp -rf share/Bibata-Modern-Classic /usr/share/icons/ || printr "Error while copying the icons"
     sudo mkdir -p /usr/share/icons/default/ || printr "Error while creating the default icons directory"
     sudo cp -rf share/Bibata-Modern-Classic/* /usr/share/icons/default/ || printr "Error while copying the default icons"
-    
+
     # Installing OhMyPosh
     printb "Installing OhMyPosh..."
     curl -s https://ohmyposh.dev/install.sh | bash -s || printr "Error while installing OhMyPosh"
-    
-    
+
+
     # Installing ricemood
     printb "Installing ricemood..."
     sudo npm install -g ricemood || printr "Error while installing ricemood"
-    
-    
+
+
     install_config
     g++ ~/.config/scripts/theme_manager.cpp -o ~/.config/scripts/wp
     printg "Installation completed successfully!"
@@ -289,11 +290,11 @@ fedora() {
 # Installation for Arch
 arch() {
     printr "no!"
-    exit 1 
+    exit 1
 }
 alpine() {
     printr "no!"
-    exit 1 
+    exit 1
 }
 
 # Handling other distributions
